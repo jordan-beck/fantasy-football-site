@@ -26,8 +26,8 @@ function Standings({ rosters, users }) {
             Record: {roster.settings.wins}-{roster.settings.losses}
           </p>
           <p className="team-points">
-            Points for: {roster.settings.fpts.toFixed(2)} Points against:{" "}
-            {roster.settings.fpts_against.toFixed(2)}
+            Points for: {roster.settings.fpts} Points against:{" "}
+            {roster.settings.fpts_against}
           </p>
         </div>
       ))}
