@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 
-function Matchups({ rosters, users }) {
-  console.log("Matchups component - rosters:", rosters);
-  console.log("Matchups component - users:", users);
-  const [selectedWeek, setSelectedWeek] = useState(11);
+function Matchups({ rosters, users, currentWeek }) {
+  const [selectedWeek, setSelectedWeek] = useState(currentWeek);
   const [matchups, setMatchups] = useState(null);
 
   useEffect(() => {
@@ -14,8 +12,11 @@ function Matchups({ rosters, users }) {
       .then((data) => {
         console.log("Matchups:", data);
         setMatchups(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching matchups:", error);
       });
-  }, [selectedWeek]);
+  }, [selectedWeek, currentWeek]);
 
   const getTeamName = (rosterId) => {
     const roster = rosters.find((r) => r.roster_id === rosterId);
@@ -37,7 +38,7 @@ function Matchups({ rosters, users }) {
     return Object.values(grouped);
   };
 
-  if (!matchups || !rosters || !users) {
+  if (!matchups || !rosters || !users || !currentWeek) {
     return <div>Loading matchups...</div>;
   }
 
@@ -45,7 +46,14 @@ function Matchups({ rosters, users }) {
 
   return (
     <div style={{ maxWidth: "800px", margin: "0 auto", padding: "20px" }}>
-      <h2>Week {selectedWeek} Matchups</h2>
+      <h2>
+        Week {selectedWeek} Matchups
+        {selectedWeek === currentWeek && (
+          <span style={{ color: "green", marginLeft: "10px" }}>
+            (Current Week)
+          </span>
+        )}
+      </h2>
       <div style={{ marginBottom: "20px" }}>
         <button
           onClick={() => setSelectedWeek(selectedWeek - 1)}
