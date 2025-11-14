@@ -4,6 +4,7 @@ import Standings from "./Standings";
 function App() {
   const [leagueData, setLeagueData] = useState(null);
   const [rosters, setRosters] = useState(null);
+  const [users, setUsers] = useState(null);
 
   useEffect(() => {
     //Fetch league info

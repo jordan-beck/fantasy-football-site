@@ -1,7 +1,7 @@
 function Standings({ rosters, users }) {
   const getTeamName = (roster) => {
     const user = users.find((u) => u.user_id === roster.owner_id);
-    return user ? user.display_name : "Unknown Team";
+    return user?.metadata?.team_name || user?.display_name || "Unknown Team";
   };
   return (
     <div>
