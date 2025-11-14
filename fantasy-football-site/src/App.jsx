@@ -41,7 +41,7 @@ function App() {
       <h1>{leagueData.name}</h1>
       <p>Season: {leagueData.season}</p>
       <p>Total Rosters: {leagueData.total_rosters}</p>
-      <Matchups />
+      <Matchups rosters={rosters} users={users} />
       <Standings rosters={rosters} users={users} />
     </div>
   );

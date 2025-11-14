@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 
-function Matchups() {
+function Matchups({ rosters, users }) {
+  console.log("Matchups component - rosters:", rosters);
+  console.log("Matchups component - users:", users);
   const [selectedWeek, setSelectedWeek] = useState(11);
   const [matchups, setMatchups] = useState(null);
 
@@ -15,9 +17,31 @@ function Matchups() {
       });
   }, [selectedWeek]);
 
-  if (!matchups) {
+  const getTeamName = (rosterId) => {
+    const roster = rosters.find((r) => r.roster_id === rosterId);
+    if (!roster) return "Unknown Team";
+
+    const user = users.find((u) => u.user_id === roster.owner_id);
+    return user?.metadata?.team_name || user?.display_name || "Unknown Team";
+  };
+
+  const groupMatchups = () => {
+    const grouped = {};
+
+    matchups.forEach((matchup) => {
+      if (!grouped[matchup.matchup_id]) {
+        grouped[matchup.matchup_id] = [];
+      }
+      grouped[matchup.matchup_id].push(matchup);
+    });
+    return Object.values(grouped);
+  };
+
+  if (!matchups || !rosters || !users) {
     return <div>Loading matchups...</div>;
   }
+
+  const pairedMatchups = groupMatchups();
 
   return (
     <div style={{ maxWidth: "800px", margin: "0 auto", padding: "20px" }}>
@@ -39,18 +63,74 @@ function Matchups() {
       </div>
 
       <div>
-        {matchups.map((matchup, index) => (
+        {pairedMatchups.map((matchupPair, index) => (
           <div
             key={index}
             style={{
-              marginBottom: "15px",
-              padding: "15px",
-              border: "1px solid #ccc",
+              marginBottom: "20px",
+              padding: "20px",
+              border: "2px solid #ccc",
+              borderRadius: "8px",
             }}
           >
-            <p>Roster ID: {matchup.roster_id}</p>
-            <p>Points: {matchup.points}</p>
-            <p>Matchup ID: {matchup.matchup_id}</p>
+            {matchupPair[0] && (
+              <div style={{ marginBottom: "10px" }}>
+                <span
+                  style={{
+                    fontWeight:
+                      matchupPair[0].points > matchupPair[1]?.points
+                        ? "bold"
+                        : "normal",
+                  }}
+                >
+                  {getTeamName(matchupPair[0].roster_id)}
+                </span>
+                <span
+                  style={{
+                    float: "right",
+                    fontSize: "1.2em",
+                    fontWeight:
+                      matchupPair[0].points > matchupPair[1]?.points
+                        ? "bold"
+                        : "normal",
+                  }}
+                >
+                  {matchupPair[0].points}
+                </span>
+              </div>
+            )}
+            <div
+              style={{ textAlign: "center", margin: "10px 0", color: "#999" }}
+            >
+              vs
+            </div>
+
+            {matchupPair[1] && (
+              <div>
+                <span
+                  style={{
+                    fontWeight:
+                      matchupPair[1].points > matchupPair[0]?.points
+                        ? "bold"
+                        : "normal",
+                  }}
+                >
+                  {getTeamName(matchupPair[1].roster_id)}
+                </span>
+                <span
+                  style={{
+                    float: "right",
+                    fontSize: "1.2em",
+                    fontWeight:
+                      matchupPair[1].points > matchupPair[0]?.points
+                        ? "bold"
+                        : "normal",
+                  }}
+                >
+                  {matchupPair[1].points}
+                </span>
+              </div>
+            )}
           </div>
         ))}
       </div>
