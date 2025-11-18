@@ -41,13 +41,18 @@ function Standings({ rosters, users }) {
             )}
             {getTeamName(roster)}
           </h3>
-          <p className="team-record">
-            Record: {roster.settings.wins}-{roster.settings.losses}
-          </p>
-          <p className="team-points">
-            Points for: {roster.settings.fpts} Points against:{" "}
-            {roster.settings.fpts_against}
-          </p>
+          <div className="team-stats">
+            <p className="stat-item">
+              <span className="stat-label">Record: </span>
+              {roster.settings.wins}-{roster.settings.losses}
+            </p>
+            <p className="stat-item">
+              <span className="stat-item">Points for: </span>
+              {roster.settings.fpts}
+              <span className="stat-item"> | Points against: </span>{" "}
+              {roster.settings.fpts_against}
+            </p>
+          </div>
         </div>
       ))}
     </div>
