@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./Matchups.css";
 
 function Matchups({ rosters, users, currentWeek }) {
   const [selectedWeek, setSelectedWeek] = useState(currentWeek);
@@ -45,24 +46,24 @@ function Matchups({ rosters, users, currentWeek }) {
   const pairedMatchups = groupMatchups();
 
   return (
-    <div style={{ maxWidth: "800px", margin: "0 auto", padding: "20px" }}>
-      <h2>
+    <div className="matchups-container">
+      <h2 className="matchups-title">
         Week {selectedWeek} Matchups
         {selectedWeek === currentWeek && (
-          <span style={{ color: "green", marginLeft: "10px" }}>
-            (Current Week)
-          </span>
+          <span className="current-week-badge">(Current Week)</span>
         )}
       </h2>
-      <div style={{ marginBottom: "20px" }}>
+      <div className="week-selector">
         <button
+          className="week-button"
           onClick={() => setSelectedWeek(selectedWeek - 1)}
           disabled={selectedWeek === 1}
         >
           Previous Week
         </button>
-        <span style={{ margin: "0 10px" }}>Week {selectedWeek}</span>
+        <span className="week-display">Week {selectedWeek}</span>
         <button
+          className="week-button"
           onClick={() => setSelectedWeek(selectedWeek + 1)}
           disabled={selectedWeek === 18}
         >
@@ -72,18 +73,11 @@ function Matchups({ rosters, users, currentWeek }) {
 
       <div>
         {pairedMatchups.map((matchupPair, index) => (
-          <div
-            key={index}
-            style={{
-              marginBottom: "20px",
-              padding: "20px",
-              border: "2px solid #ccc",
-              borderRadius: "8px",
-            }}
-          >
+          <div key={index} className="matchup-card">
             {matchupPair[0] && (
-              <div style={{ marginBottom: "10px" }}>
+              <div className="matchup-team">
                 <span
+                  className="team-info"
                   style={{
                     fontWeight:
                       matchupPair[0].points > matchupPair[1]?.points
@@ -94,9 +88,8 @@ function Matchups({ rosters, users, currentWeek }) {
                   {getTeamName(matchupPair[0].roster_id)}
                 </span>
                 <span
+                  className="team-score"
                   style={{
-                    float: "right",
-                    fontSize: "1.2em",
                     fontWeight:
                       matchupPair[0].points > matchupPair[1]?.points
                         ? "bold"
@@ -107,15 +100,12 @@ function Matchups({ rosters, users, currentWeek }) {
                 </span>
               </div>
             )}
-            <div
-              style={{ textAlign: "center", margin: "10px 0", color: "#999" }}
-            >
-              vs
-            </div>
+            <div className="matchup-vs">vs</div>
 
             {matchupPair[1] && (
-              <div>
+              <div className="matchup-team">
                 <span
+                  classname="team-info"
                   style={{
                     fontWeight:
                       matchupPair[1].points > matchupPair[0]?.points
@@ -126,9 +116,8 @@ function Matchups({ rosters, users, currentWeek }) {
                   {getTeamName(matchupPair[1].roster_id)}
                 </span>
                 <span
+                  className="team-score"
                   style={{
-                    float: "right",
-                    fontSize: "1.2em",
                     fontWeight:
                       matchupPair[1].points > matchupPair[0]?.points
                         ? "bold"

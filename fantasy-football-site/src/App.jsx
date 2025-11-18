@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Standings from "./Standings";
 import Matchups from "./Matchups";
+import "./App.css";
 
 function App() {
   const [leagueData, setLeagueData] = useState(null);
@@ -37,10 +38,12 @@ function App() {
   }
 
   return (
-    <div>
-      <h1>{leagueData.name}</h1>
-      <p>Season: {leagueData.season}</p>
-      <p>Total Rosters: {leagueData.total_rosters}</p>
+    <div className="app-container">
+      <header className="app-header">
+        <h1>{leagueData.name}</h1>
+        <p>Season: {leagueData.season}</p>
+        <p>Total Rosters: {leagueData.total_rosters}</p>
+      </header>
       <Matchups
         rosters={rosters}
         users={users}
