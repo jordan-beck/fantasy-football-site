@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./Layout";
 import Standings from "./Standings";
 import Matchups from "./Matchups";
+import ChampionWidget from "./ChampionWidget";
 import "./App.css";
 
 function App() {
@@ -48,10 +49,7 @@ function App() {
           path="/"
           element={
             <Layout leagueData={leagueData}>
-              <div>
-                <h3>Right Sidebar Widgets</h3>
-                <p>Last year's champion will go here!</p>
-              </div>
+              <ChampionWidget currentLeagueId={leagueData.league_id} />
             </Layout>
           }
         >

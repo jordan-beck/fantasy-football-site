@@ -105,7 +105,7 @@ function Matchups({ rosters, users, currentWeek }) {
             {matchupPair[1] && (
               <div className="matchup-team">
                 <span
-                  classname="team-info"
+                  className="team-info"
                   style={{
                     fontWeight:
                       matchupPair[1].points > matchupPair[0]?.points
