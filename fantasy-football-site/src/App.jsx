@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./Layout";
 import Standings from "./Standings";
 import Matchups from "./Matchups";
 import "./App.css";
@@ -34,23 +36,53 @@ function App() {
   }, []);
 
   if (!leagueData || !rosters || !users) {
-    return <div>Loading...</div>;
+    return (
+      <div style={{ padding: "40px", textAlign: "center" }}>Loading...</div>
+    );
   }
 
   return (
-    <div className="app-container">
-      <header className="app-header">
-        <h1>{leagueData.name}</h1>
-        <p>Season: {leagueData.season}</p>
-        <p>Total Rosters: {leagueData.total_rosters}</p>
-      </header>
-      <Matchups
-        rosters={rosters}
-        users={users}
-        currentWeek={leagueData.settings.leg}
-      />
-      <Standings rosters={rosters} users={users} />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Layout leagueData={leagueData}>
+              <div>
+                <h3>Right Sidebar Widgets</h3>
+                <p>Last year's champion will go here!</p>
+              </div>
+            </Layout>
+          }
+        >
+          <Route
+            index
+            element={
+              <div>
+                <h1>Home Dashboard</h1>
+                <p>
+                  Main content area - your dashboard components will go here
+                </p>
+              </div>
+            }
+          />
+          <Route
+            path="matchups"
+            element={
+              <Matchups
+                rosters={rosters}
+                users={users}
+                currentWeek={leagueData.settings.leg}
+              />
+            }
+          />
+          <Route
+            path="standings"
+            element={<Standings rosters={rosters} users={users} />}
+          />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
