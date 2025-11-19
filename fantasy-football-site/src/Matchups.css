@@ -1,23 +1,26 @@
 .matchups-container {
-  background: white;
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
   padding: 30px;
-  margin-bottom: 30px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .matchups-title {
   font-size: 2em;
   margin-bottom: 25px;
-  color: #2c3e50;
+  color: #1d1d1f;
   text-align: center;
+  font-weight: 700;
 }
 
 .current-week-badge {
-  color: #27ae60;
-  font-weight: bold;
+  color: #34c759;
+  font-weight: 600;
   margin-left: 10px;
-  font-size: 0.8em;
+  font-size: 0.7em;
 }
 
 .week-selector {
@@ -29,43 +32,53 @@
 }
 
 .week-button {
-  background: #667eea;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #667eea;
+  border: 1px solid rgba(102, 126, 234, 0.3);
+  padding: 10px 24px;
+  border-radius: 12px;
   cursor: pointer;
-  font-size: 1em;
-  transition: background 0.3s;
+  font-size: 0.95em;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .week-button:hover:not(:disabled) {
-  background: #5568d3;
+  background: rgba(102, 126, 234, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
 }
 
 .week-button:disabled {
-  background: #bdc3c7;
+  background: rgba(255, 255, 255, 0.4);
+  color: #86868b;
   cursor: not-allowed;
+  border-color: rgba(0, 0, 0, 0.1);
 }
 
 .week-display {
   font-size: 1.2em;
-  font-weight: bold;
-  color: #2c3e50;
+  font-weight: 600;
+  color: #1d1d1f;
 }
 
 .matchup-card {
-  background: #f8f9fa;
-  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
   padding: 20px;
   margin-bottom: 15px;
-  border: 2px solid #e1e8ed;
-  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
 }
 
 .matchup-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .matchup-team {
@@ -78,17 +91,20 @@
 .team-info {
   display: flex;
   align-items: center;
+  color: #1d1d1f;
+  font-weight: 500;
 }
 
 .team-score {
   font-size: 1.4em;
-  font-weight: bold;
-  color: #2c3e50;
+  font-weight: 700;
+  color: #1d1d1f;
 }
 
 .matchup-vs {
   text-align: center;
   margin: 10px 0;
-  color: #95a5a6;
-  font-weight: bold;
+  color: #86868b;
+  font-weight: 600;
+  font-size: 0.9em;
 }
