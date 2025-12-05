@@ -1,0 +1,97 @@
+/* Themed Card Component */
+.themed-card {
+  padding: 20px;
+  border-radius: 16px;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.themed-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Themed Container Component */
+.themed-container {
+  padding: 24px;
+  border-radius: 20px;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Themed List Item Component */
+.themed-list-item {
+  padding: 12px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.themed-list-item:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.themed-list-item.active {
+  font-weight: 500;
+}
+
+/* Themed Button Component */
+.themed-button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  outline: none;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+.themed-button:hover:not(.disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.themed-button:active:not(.disabled) {
+  transform: translateY(0);
+}
+
+.themed-button.disabled {
+  opacity: 0.6;
+}
+
+.themed-button-primary {
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.themed-button-primary:hover:not(.disabled) {
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* Themed Badge Component */
+.themed-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+/* Themed Divider Component */
+.themed-divider {
+  border: none;
+  border-top: 1px solid;
+  margin: 16px 0;
+  opacity: 0.6;
+}

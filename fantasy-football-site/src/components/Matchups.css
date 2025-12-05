@@ -1,0 +1,247 @@
+.matchups-container {
+  border-radius: 16px;
+  padding: 30px;
+  transition: all 0.3s ease;
+}
+
+.matchups-title {
+  font-size: 2em;
+  margin-bottom: 25px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.current-week-badge {
+  font-weight: 600;
+  margin-left: 10px;
+  font-size: 0.7em;
+}
+
+.week-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.week-button {
+  padding: 10px 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 0.95em;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+/* Dark theme week buttons */
+[data-theme="dark"] .week-button {
+  background: #1a1f3a;
+  color: #8ab4f8;
+  border: 1px solid rgba(138, 180, 248, 0.4);
+}
+
+[data-theme="dark"] .week-button:hover:not(:disabled) {
+  background: #222847;
+  transform: translateY(-2px);
+}
+
+[data-theme="dark"] .week-button:disabled {
+  background: rgba(154, 160, 166, 0.1);
+  color: #5f6368;
+  cursor: not-allowed;
+  border-color: rgba(232, 234, 237, 0.1);
+  opacity: 0.5;
+}
+
+/* Light theme week buttons */
+[data-theme="light"] .week-button {
+  background: #ffffff;
+  color: #667eea;
+  border: 1px solid rgba(102, 126, 234, 0.4);
+}
+
+[data-theme="light"] .week-button:hover:not(:disabled) {
+  background: #f0f0f2;
+  transform: translateY(-2px);
+}
+
+[data-theme="light"] .week-button:disabled {
+  background: rgba(0, 0, 0, 0.05);
+  color: #86868b;
+  cursor: not-allowed;
+  border-color: rgba(0, 0, 0, 0.1);
+  opacity: 0.5;
+}
+
+.week-display {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.matchup-card {
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+/* Dark theme matchup cards */
+[data-theme="dark"] .matchup-card:hover {
+  transform: translateY(-2px);
+  background: #222847;
+}
+
+/* Light theme matchup cards */
+[data-theme="light"] .matchup-card:hover {
+  transform: translateY(-2px);
+  background: #f0f0f2;
+}
+
+.matchup-team {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.team-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+
+.team-info.winning {
+  font-weight: 700;
+}
+
+.matchup-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  object-fit: cover;
+}
+
+.team-score {
+  font-size: 1.4em;
+  font-weight: 700;
+}
+
+.team-score.winning {
+  font-weight: 800;
+}
+
+.matchup-vs {
+  text-align: center;
+  margin: 10px 0;
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+/* ===========================
+   RESPONSIVE DESIGN
+   =========================== */
+
+/* Tablet (< 1024px) */
+@media (max-width: 1024px) {
+  .matchups-container {
+    padding: 24px;
+  }
+
+  .matchups-title {
+    font-size: 1.8em;
+  }
+}
+
+/* Mobile (< 768px) */
+@media (max-width: 768px) {
+  .matchups-container {
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .matchups-title {
+    font-size: 1.6em;
+    margin-bottom: 20px;
+  }
+
+  .current-week-badge {
+    display: block;
+    margin-left: 0;
+    margin-top: 8px;
+    font-size: 0.65em;
+  }
+
+  .week-selector {
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+
+  .week-button {
+    padding: 8px 18px;
+    font-size: 0.9em;
+  }
+
+  .week-display {
+    font-size: 1.1em;
+    width: 100%;
+    text-align: center;
+    order: -1;
+    margin-bottom: 8px;
+  }
+
+  .matchup-card {
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+
+  .team-score {
+    font-size: 1.2em;
+  }
+
+  .matchup-avatar {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Small Mobile (< 480px) */
+@media (max-width: 480px) {
+  .matchups-container {
+    padding: 16px;
+  }
+
+  .matchups-title {
+    font-size: 1.4em;
+  }
+
+  .week-button {
+    padding: 8px 14px;
+    font-size: 0.85em;
+  }
+
+  .matchup-card {
+    padding: 14px;
+  }
+
+  .team-info {
+    font-size: 0.95em;
+  }
+
+  .team-score {
+    font-size: 1.1em;
+  }
+
+  .matchup-vs {
+    font-size: 0.85em;
+    margin: 8px 0;
+  }
+
+  .matchup-avatar {
+    width: 20px;
+    height: 20px;
+  }
+}

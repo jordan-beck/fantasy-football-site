@@ -1,0 +1,275 @@
+.blog-section {
+  margin-top: 40px;
+}
+
+.blog-title {
+  font-size: 2em;
+  margin-bottom: 24px;
+  font-weight: 700;
+}
+
+.blog-posts {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.blog-post {
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Dark theme blog post */
+[data-theme="dark"] .blog-post:hover {
+  transform: translateY(-2px);
+  background: #1f2937 !important;
+}
+
+/* Light theme blog post */
+[data-theme="light"] .blog-post:hover {
+  transform: translateY(-2px);
+  background: #f0f0f2 !important;
+}
+
+.blog-post-header {
+  padding: 24px 24px 16px 24px;
+}
+
+.blog-post-title {
+  font-size: 1.5em;
+  margin: 0 0 12px 0;
+  font-weight: 600;
+}
+
+.blog-post-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+.blog-post-separator {
+  opacity: 0.5;
+}
+
+.blog-post-content {
+  padding: 0 24px;
+  transition: all 0.3s ease;
+  line-height: 1.6;
+}
+
+.blog-post-content.collapsed {
+  max-height: 120px;
+  overflow: hidden;
+  position: relative;
+}
+
+.blog-post-content.collapsed::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, currentColor);
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+[data-theme="dark"] .blog-post-content.collapsed::after {
+  background: linear-gradient(to bottom, transparent, #161b22);
+}
+
+[data-theme="light"] .blog-post-content.collapsed::after {
+  background: linear-gradient(to bottom, transparent, #ffffff);
+}
+
+.blog-post-content.expanded {
+  max-height: none;
+  padding-bottom: 16px;
+}
+
+/* Markdown content styling */
+.blog-post-content h1 {
+  font-size: 1.8em;
+  margin: 24px 0 16px 0;
+  font-weight: 700;
+}
+
+.blog-post-content h2 {
+  font-size: 1.4em;
+  margin: 20px 0 12px 0;
+  font-weight: 600;
+}
+
+.blog-post-content h3 {
+  font-size: 1.2em;
+  margin: 16px 0 10px 0;
+  font-weight: 600;
+}
+
+.blog-post-content p {
+  margin: 12px 0;
+  line-height: 1.7;
+}
+
+.blog-post-content ul,
+.blog-post-content ol {
+  margin: 12px 0;
+  padding-left: 28px;
+}
+
+.blog-post-content li {
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.blog-post-content hr {
+  margin: 24px 0;
+  border: none;
+  border-top: 1px solid;
+  opacity: 0.3;
+}
+
+.blog-post-content strong {
+  font-weight: 700;
+}
+
+.blog-post-content em {
+  font-style: italic;
+}
+
+.blog-post-content code {
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+[data-theme="dark"] .blog-post-content code {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="light"] .blog-post-content code {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.blog-post-toggle {
+  width: 100%;
+  padding: 16px 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95em;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.blog-post-toggle:hover {
+  opacity: 0.8;
+}
+
+/* ===========================
+   RESPONSIVE DESIGN
+   =========================== */
+
+/* Tablet (< 1024px) */
+@media (max-width: 1024px) {
+  .blog-section {
+    margin-top: 32px;
+  }
+
+  .blog-title {
+    font-size: 1.8em;
+  }
+}
+
+/* Mobile (< 768px) */
+@media (max-width: 768px) {
+  .blog-section {
+    margin-top: 28px;
+  }
+
+  .blog-title {
+    font-size: 1.6em;
+    margin-bottom: 20px;
+  }
+
+  .blog-posts {
+    gap: 16px;
+  }
+
+  .blog-post-header {
+    padding: 20px 20px 14px 20px;
+  }
+
+  .blog-post-title {
+    font-size: 1.3em;
+  }
+
+  .blog-post-meta {
+    font-size: 0.85em;
+  }
+
+  .blog-post-content {
+    padding: 0 20px;
+  }
+
+  .blog-post-content h1 {
+    font-size: 1.5em;
+  }
+
+  .blog-post-content h2 {
+    font-size: 1.2em;
+  }
+
+  .blog-post-content h3 {
+    font-size: 1.1em;
+  }
+
+  .blog-post-toggle {
+    padding: 14px 20px;
+    font-size: 0.9em;
+  }
+}
+
+/* Small Mobile (< 480px) */
+@media (max-width: 480px) {
+  .blog-section {
+    margin-top: 24px;
+  }
+
+  .blog-title {
+    font-size: 1.4em;
+    margin-bottom: 16px;
+  }
+
+  .blog-post-header {
+    padding: 16px 16px 12px 16px;
+  }
+
+  .blog-post-title {
+    font-size: 1.2em;
+  }
+
+  .blog-post-meta {
+    font-size: 0.8em;
+    flex-wrap: wrap;
+  }
+
+  .blog-post-content {
+    padding: 0 16px;
+  }
+
+  .blog-post-content.collapsed {
+    max-height: 100px;
+  }
+
+  .blog-post-toggle {
+    padding: 12px 16px;
+    font-size: 0.85em;
+  }
+}

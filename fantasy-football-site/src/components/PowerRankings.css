@@ -1,0 +1,292 @@
+.power-rankings-section {
+  margin-top: 40px;
+}
+
+.power-rankings-title {
+  font-size: 2em;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.power-rankings-subtitle {
+  font-size: 0.95em;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.power-rankings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.power-ranking-item {
+  border-radius: 12px;
+  padding: 16px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Dark theme hover */
+[data-theme="dark"] .power-ranking-item:hover {
+  transform: translateY(-2px);
+  background: #1f2937 !important;
+}
+
+/* Light theme hover */
+[data-theme="light"] .power-ranking-item:hover {
+  transform: translateY(-2px);
+  background: #f0f0f2 !important;
+}
+
+.ranking-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ranking-position {
+  font-size: 1.3em;
+  font-weight: 700;
+  min-width: 40px;
+}
+
+.ranking-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  object-fit: cover;
+}
+
+.ranking-team-name {
+  font-size: 1.1em;
+  font-weight: 600;
+  flex: 1;
+}
+
+.ranking-stats {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.9em;
+  font-weight: 500;
+  margin-left: 52px;
+}
+
+.ranking-record {
+  min-width: 60px;
+}
+
+.ranking-bar-container {
+  position: relative;
+  height: 32px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-left: 52px;
+}
+
+.ranking-bar {
+  height: 100%;
+  transition: width 0.6s ease;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 12px;
+  min-width: 60px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.ranking-score {
+  font-size: 0.85em;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.power-rankings-legend {
+  margin-top: 24px;
+  padding-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.legend-label {
+  font-size: 0.85em;
+  font-weight: 500;
+}
+
+/* ===========================
+   RESPONSIVE DESIGN
+   =========================== */
+
+/* Tablet (< 1024px) */
+@media (max-width: 1024px) {
+  .power-rankings-section {
+    margin-top: 32px;
+  }
+
+  .power-rankings-title {
+    font-size: 1.8em;
+  }
+}
+
+/* Mobile (< 768px) */
+@media (max-width: 768px) {
+  .power-rankings-section {
+    margin-top: 28px;
+  }
+
+  .power-rankings-title {
+    font-size: 1.6em;
+  }
+
+  .power-rankings-subtitle {
+    font-size: 0.9em;
+    margin-bottom: 20px;
+  }
+
+  .power-rankings-list {
+    gap: 10px;
+  }
+
+  .power-ranking-item {
+    padding: 14px;
+  }
+
+  .ranking-position {
+    font-size: 1.1em;
+    min-width: 35px;
+  }
+
+  .ranking-avatar {
+    width: 28px;
+    height: 28px;
+  }
+
+  .ranking-team-name {
+    font-size: 1em;
+  }
+
+  .ranking-stats {
+    font-size: 0.85em;
+    gap: 12px;
+    margin-left: 47px;
+  }
+
+  .ranking-bar-container {
+    height: 28px;
+    margin-left: 47px;
+  }
+
+  .ranking-score {
+    font-size: 0.8em;
+    padding-right: 10px;
+  }
+
+  .power-rankings-legend {
+    gap: 16px;
+    margin-top: 20px;
+    padding-top: 14px;
+  }
+
+  .legend-label {
+    font-size: 0.8em;
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* Small Mobile (< 480px) */
+@media (max-width: 480px) {
+  .power-rankings-section {
+    margin-top: 24px;
+  }
+
+  .power-rankings-title {
+    font-size: 1.4em;
+  }
+
+  .power-rankings-subtitle {
+    font-size: 0.85em;
+    margin-bottom: 16px;
+  }
+
+  .power-ranking-item {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .ranking-position {
+    font-size: 1em;
+    min-width: 30px;
+  }
+
+  .ranking-avatar {
+    width: 24px;
+    height: 24px;
+  }
+
+  .ranking-team-name {
+    font-size: 0.95em;
+  }
+
+  .ranking-stats {
+    font-size: 0.8em;
+    gap: 10px;
+    margin-left: 42px;
+    flex-wrap: wrap;
+  }
+
+  .ranking-record {
+    min-width: 50px;
+  }
+
+  .ranking-bar-container {
+    height: 26px;
+    margin-left: 42px;
+  }
+
+  .ranking-bar {
+    padding-right: 8px;
+    min-width: 50px;
+  }
+
+  .ranking-score {
+    font-size: 0.75em;
+  }
+
+  .power-rankings-legend {
+    gap: 12px;
+    margin-top: 16px;
+    padding-top: 12px;
+  }
+
+  .legend-label {
+    font-size: 0.75em;
+  }
+
+  .legend-dot {
+    width: 8px;
+    height: 8px;
+  }
+}

@@ -1,0 +1,144 @@
+.standings-container {
+  border-radius: 16px;
+  padding: 30px;
+  transition: all 0.3s ease;
+}
+
+.standings-title {
+  font-size: 2em;
+  margin-bottom: 25px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.team-card {
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 12px;
+  transition: all 0.3s ease;
+}
+
+/* Dark theme team cards */
+[data-theme="dark"] .team-card:hover {
+  transform: translateY(-2px);
+  background: #222847;
+}
+
+/* Light theme team cards */
+[data-theme="light"] .team-card:hover {
+  transform: translateY(-2px);
+  background: #f0f0f2;
+}
+
+.team-header {
+  font-size: 1.3em;
+  margin: 0 0 15px 0;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+
+.team-avatar {
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.team-stats {
+  display: flex;
+  gap: 30px;
+  font-size: 1em;
+}
+
+.stat-item {
+  margin: 0;
+}
+
+.stat-label {
+  font-weight: 500;
+}
+
+/* ===========================
+   RESPONSIVE DESIGN
+   =========================== */
+
+/* Tablet (< 1024px) */
+@media (max-width: 1024px) {
+  .standings-container {
+    padding: 24px;
+  }
+
+  .standings-title {
+    font-size: 1.8em;
+  }
+}
+
+/* Mobile (< 768px) */
+@media (max-width: 768px) {
+  .standings-container {
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .standings-title {
+    font-size: 1.6em;
+    margin-bottom: 20px;
+  }
+
+  .team-card {
+    padding: 16px;
+    margin-bottom: 10px;
+  }
+
+  .team-header {
+    font-size: 1.1em;
+    margin-bottom: 12px;
+  }
+
+  .team-avatar {
+    width: 26px;
+    height: 26px;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+
+  .team-stats {
+    flex-direction: column;
+    gap: 12px;
+    font-size: 0.95em;
+  }
+}
+
+/* Small Mobile (< 480px) */
+@media (max-width: 480px) {
+  .standings-container {
+    padding: 16px;
+  }
+
+  .standings-title {
+    font-size: 1.4em;
+  }
+
+  .team-card {
+    padding: 14px;
+  }
+
+  .team-header {
+    font-size: 1em;
+  }
+
+  .team-avatar {
+    width: 24px;
+    height: 24px;
+    margin-left: 6px;
+    margin-right: 6px;
+  }
+
+  .team-stats {
+    font-size: 0.9em;
+    gap: 10px;
+  }
+}

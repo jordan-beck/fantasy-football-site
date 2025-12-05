@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import { useTheme } from "../contexts/ThemeContext";
 import "./ChampionWidget.css";
 
 function ChampionWidget({ currentLeagueId }) {
+  const { theme } = useTheme();
   const [championData, setChampionData] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -76,45 +78,80 @@ function ChampionWidget({ currentLeagueId }) {
 
   if (loading) {
     return (
-      <div className="champion-widget">
-        <h3>🏆 Reigning Champion</h3>
-        <p>Loading...</p>
+      <div
+        className="champion-widget"
+        style={{
+          background: theme.bg.tertiary,
+          border: `1px solid ${theme.border.primary}`,
+        }}
+      >
+        <h3 style={{ color: theme.text.primary }}>🏆 Reigning Champion</h3>
+        <p style={{ color: theme.text.secondary }}>Loading...</p>
       </div>
     );
   }
 
   if (!championData) {
     return (
-      <div className="champion-widget">
-        <h3>🏆 Reigning Champion</h3>
-        <p>No previous season data</p>
+      <div
+        className="champion-widget"
+        style={{
+          background: theme.bg.tertiary,
+          border: `1px solid ${theme.border.primary}`,
+        }}
+      >
+        <h3 style={{ color: theme.text.primary }}>🏆 Reigning Champion</h3>
+        <p style={{ color: theme.text.secondary }}>No previous season data</p>
       </div>
     );
   }
 
   return (
-    <div className="champion-widget">
-      <h3>🏆 Reigning Champion</h3>
+    <div
+      className="champion-widget"
+      style={{
+        background: theme.bg.tertiary,
+        border: `1px solid ${theme.border.primary}`,
+      }}
+    >
+      <h3 style={{ color: theme.text.primary }}>🏆 Reigning Champion</h3>
       <div className="champion-content">
-        <div className="champion-season">{championData.season} Season</div>
+        <div
+          className="champion-season"
+          style={{ color: theme.text.secondary }}
+        >
+          {championData.season} Season
+        </div>
         {championData.avatar && (
           <img
             src={championData.avatar}
             alt="Champion avatar"
             className="champion-avatar"
+            style={{ border: `3px solid ${theme.border.accent}` }}
           />
         )}
-        <div className="champion-name">{championData.teamName}</div>
-        <div className="champion-stats">
+        <div className="champion-name" style={{ color: theme.text.primary }}>
+          {championData.teamName}
+        </div>
+        <div
+          className="champion-stats"
+          style={{ borderTop: `1px solid ${theme.border.primary}` }}
+        >
           <div className="stat">
-            <span className="stat-label">Record</span>
-            <span className="stat-value">
+            <span className="stat-label" style={{ color: theme.text.secondary }}>
+              Record
+            </span>
+            <span className="stat-value" style={{ color: theme.text.primary }}>
               {championData.wins}-{championData.losses}
             </span>
           </div>
           <div className="stat">
-            <span className="stat-label">Points</span>
-            <span className="stat-value">{championData.points.toFixed(2)}</span>
+            <span className="stat-label" style={{ color: theme.text.secondary }}>
+              Points
+            </span>
+            <span className="stat-value" style={{ color: theme.text.primary }}>
+              {championData.points.toFixed(2)}
+            </span>
           </div>
         </div>
       </div>

@@ -1,46 +1,54 @@
-import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./Layout";
-import Standings from "./Standings";
-import Matchups from "./Matchups";
-import ChampionWidget from "./ChampionWidget";
-import "./App.css";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useTheme } from './contexts/ThemeContext';
+import { useLeagueData } from './hooks/useLeagueData';
+import Layout from './components/Layout';
+import Home from './components/Home';
+import Standings from './components/Standings';
+import Matchups from './components/Matchups';
+import ChampionWidget from './components/ChampionWidget';
+import './App.css';
 
+/**
+ * Main App Component
+ * Handles routing and data fetching for the fantasy football application
+ */
 function App() {
-  const [leagueData, setLeagueData] = useState(null);
-  const [rosters, setRosters] = useState(null);
-  const [users, setUsers] = useState(null);
+  const { theme } = useTheme();
+  const { leagueData, rosters, users, loading, error } = useLeagueData();
 
-  useEffect(() => {
-    //Fetch league info
-    fetch("https://api.sleeper.app/v1/league/1257101142144327682")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setLeagueData(data);
-      });
-    //Fetch rosters
-    fetch("https://api.sleeper.app/v1/league/1257101142144327682/rosters")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Rosters:", data);
-        setRosters(data);
-      });
-
-    //Fetch users
-    fetch("https://api.sleeper.app/v1/league/1257101142144327682/users")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Users:", data);
-        setUsers(data);
-      });
-  }, []);
-
-  if (!leagueData || !rosters || !users) {
+  // Loading state
+  if (loading) {
     return (
-      <div style={{ padding: "40px", textAlign: "center" }}>Loading...</div>
+      <div
+        style={{
+          padding: '40px',
+          textAlign: 'center',
+          color: theme.text.primary,
+          fontSize: '18px',
+        }}
+      >
+        Loading...
+      </div>
     );
   }
+
+  // Error state
+  if (error) {
+    return (
+      <div
+        style={{
+          padding: '40px',
+          textAlign: 'center',
+          color: theme.status.error,
+          fontSize: '18px',
+        }}
+      >
+        Error loading league data: {error}
+      </div>
+    );
+  }
+
+  // Main app with routing
 
   return (
     <BrowserRouter>
@@ -55,14 +63,7 @@ function App() {
         >
           <Route
             index
-            element={
-              <div>
-                <h1>Home Dashboard</h1>
-                <p>
-                  Main content area - your dashboard components will go here
-                </p>
-              </div>
-            }
+            element={<Home leagueData={leagueData} rosters={rosters} users={users} />}
           />
           <Route
             path="matchups"
