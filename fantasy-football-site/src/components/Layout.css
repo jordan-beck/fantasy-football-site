@@ -264,7 +264,7 @@
   .layout {
     grid-template-columns: 1fr;
     gap: 12px;
-    padding: 70px 8px 0 8px; /* Minimal padding for mobile */
+    padding: 90px 8px 0 8px; /* Extra top padding for fixed header */
   }
 
   /* Hide desktop navigation */
@@ -473,7 +473,7 @@
 @media (max-width: 480px) {
   .layout {
     gap: 10px;
-    padding: 65px 6px 0 6px; /* Minimal padding for small mobile */
+    padding: 85px 6px 0 6px; /* Extra top padding for fixed header */
   }
 
   .mobile-header-content {
