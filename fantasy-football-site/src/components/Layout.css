@@ -159,7 +159,7 @@
   margin-top: auto;
   padding-top: 20px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start; /* Left-justified on desktop */
 }
 
 /* Custom scrollbar for sidebars - Dark theme (Red neon) */
@@ -453,6 +453,12 @@
     border: 2px solid transparent;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+  }
+
+  /* Mobile theme toggle - Right-justified with more bottom spacing */
+  .theme-toggle-container {
+    justify-content: flex-end;
+    padding: 20px 16px 24px;
   }
 
   /* Main content */
