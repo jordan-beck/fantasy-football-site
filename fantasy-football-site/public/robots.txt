@@ -1,0 +1,6 @@
+# Robots.txt for Jabroni Beaters Fantasy Football League
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://jabronibeaters.com/sitemap.xml
