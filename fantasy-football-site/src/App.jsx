@@ -11,6 +11,7 @@ import Transactions from './components/Transactions';
 import LeagueDetails from './components/LeagueDetails';
 import ChampionWidget from './components/ChampionWidget';
 import RecentTransactions from './components/RecentTransactions';
+import ScrollToTop from './components/ScrollToTop';
 import './App.css';
 
 /**
@@ -68,6 +69,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route
           path="/"

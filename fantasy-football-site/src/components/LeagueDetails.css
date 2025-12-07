@@ -93,6 +93,16 @@
    =========================== */
 
 .rosters-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.season-rosters-container {
+  margin-bottom: 20px;
+}
+
+.roster-cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
@@ -625,7 +635,7 @@
     font-size: 0.75em;
   }
 
-  .rosters-section {
+  .roster-cards-grid {
     grid-template-columns: 1fr;
   }
 

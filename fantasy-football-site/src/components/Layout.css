@@ -264,8 +264,7 @@
   .layout {
     grid-template-columns: 1fr;
     gap: 12px;
-    padding: 0;
-    padding-top: 70px; /* Make room for fixed header */
+    padding: 70px 20px 0 12px; /* Extra right padding for scrollbar visibility */
   }
 
   /* Hide desktop navigation */
@@ -460,7 +459,7 @@
 
   /* Main content */
   .main-content {
-    padding: 12px;
+    padding: 0;
   }
 
   .widgets-sidebar {
@@ -476,8 +475,7 @@
 @media (max-width: 480px) {
   .layout {
     gap: 10px;
-    padding: 0;
-    padding-top: 65px;
+    padding: 65px 18px 0 10px; /* Extra right padding for scrollbar visibility */
   }
 
   .mobile-header-content {
@@ -493,6 +491,6 @@
   }
 
   .main-content {
-    padding: 10px;
+    padding: 0;
   }
 }

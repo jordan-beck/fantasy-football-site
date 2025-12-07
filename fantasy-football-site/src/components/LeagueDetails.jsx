@@ -227,7 +227,15 @@ function LeagueDetails({ leagueData, rosters = [], users = [], nflPlayers = null
       {/* Tab Content */}
       <div className="tab-content">
         {activeTab === 'rosters' && (
-          <RostersSection rosters={rosters} users={users} nflPlayers={nflPlayers} theme={theme} />
+          <RostersSection
+            rosters={rosters}
+            users={users}
+            nflPlayers={nflPlayers}
+            theme={theme}
+            leagueData={leagueData}
+            previousSeasons={previousSeasons}
+            loading={historyLoading}
+          />
         )}
         {activeTab === 'managers' && (
           <ManagersSection users={users} rosters={rosters} theme={theme} />
@@ -266,13 +274,22 @@ function LeagueDetails({ leagueData, rosters = [], users = [], nflPlayers = null
 }
 
 // Rosters Section Component
-function RostersSection({ rosters, users, nflPlayers, theme }) {
+function RostersSection({ rosters, users, nflPlayers, theme, leagueData, previousSeasons, loading }) {
   const [expandedRosters, setExpandedRosters] = useState({});
+  const [expandedSeasons, setExpandedSeasons] = useState({});
 
-  const toggleBench = (rosterId) => {
+  const toggleBench = (rosterId, seasonKey = 'current') => {
+    const key = `${seasonKey}-${rosterId}`;
     setExpandedRosters(prev => ({
       ...prev,
-      [rosterId]: !prev[rosterId]
+      [key]: !prev[key]
+    }));
+  };
+
+  const toggleSeason = (season) => {
+    setExpandedSeasons(prev => ({
+      ...prev,
+      [season]: !prev[season]
     }));
   };
 
@@ -286,76 +303,154 @@ function RostersSection({ rosters, users, nflPlayers, theme }) {
     return position && team ? `${name} (${position}, ${team})` : name;
   };
 
+  const renderRosterCards = (rostersData, usersData, seasonKey = 'current') => {
+    return rostersData.map((roster) => {
+      const user = usersData.find(u => u.user_id === roster.owner_id);
+      const teamName = user?.metadata?.team_name || user?.display_name || `Team ${roster.roster_id}`;
+      const starters = roster.starters || [];
+      const bench = (roster.players || []).filter(p => !starters.includes(p));
+      const benchKey = `${seasonKey}-${roster.roster_id}`;
+
+      return (
+        <div
+          key={`${seasonKey}-${roster.roster_id}`}
+          className="roster-card"
+          style={{
+            background: theme.bg.tertiary,
+            border: `2px solid ${theme.border.primary}`,
+          }}
+        >
+          <div className="roster-header">
+            <h3 style={{ color: theme.text.primary }}>{teamName}</h3>
+            <div className="roster-record" style={{ color: theme.text.secondary }}>
+              {roster.settings?.wins || 0}-{roster.settings?.losses || 0}
+              {roster.settings?.ties > 0 && `-${roster.settings.ties}`}
+            </div>
+          </div>
+
+          <div className="roster-starters">
+            <h4 style={{ color: theme.text.accent }}>Starters</h4>
+            <div className="players-list">
+              {starters.map((playerId, idx) => (
+                <div
+                  key={`${playerId}-${idx}`}
+                  className="player-item"
+                  style={{ color: theme.text.primary }}
+                >
+                  {getPlayerName(playerId)}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {bench.length > 0 && (
+            <div className="roster-bench">
+              <button
+                className="bench-toggle"
+                onClick={() => toggleBench(roster.roster_id, seasonKey)}
+                style={{
+                  color: theme.text.secondary,
+                  borderColor: theme.border.primary,
+                }}
+              >
+                {expandedRosters[benchKey] ? '▼' : '▶'} Bench ({bench.length})
+              </button>
+              {expandedRosters[benchKey] && (
+                <div className="players-list bench-players">
+                  {bench.map((playerId, idx) => (
+                    <div
+                      key={`${playerId}-${idx}`}
+                      className="player-item"
+                      style={{ color: theme.text.secondary }}
+                    >
+                      {getPlayerName(playerId)}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      );
+    });
+  };
+
   return (
     <div className="rosters-section">
-      {rosters.map((roster) => {
-        const user = users.find(u => u.user_id === roster.owner_id);
-        const teamName = user?.metadata?.team_name || user?.display_name || `Team ${roster.roster_id}`;
-        const starters = roster.starters || [];
-        const bench = (roster.players || []).filter(p => !starters.includes(p));
+      {/* Current Season Rosters */}
+      <div
+        className="season-rosters-container"
+        style={{
+          background: theme.bg.tertiary,
+          border: `2px solid ${theme.border.primary}`,
+          marginBottom: '20px',
+        }}
+      >
+        <h3 style={{ color: theme.text.primary, padding: '16px', borderBottom: `1px solid ${theme.border.primary}` }}>
+          {leagueData?.season || '2024'} Season Rosters
+        </h3>
+        <div className="roster-cards-grid" style={{ padding: '16px' }}>
+          {renderRosterCards(rosters, users, 'current')}
+        </div>
+      </div>
 
-        return (
-          <div
-            key={roster.roster_id}
-            className="roster-card"
-            style={{
-              background: theme.bg.tertiary,
-              border: `2px solid ${theme.border.primary}`,
-            }}
-          >
-            <div className="roster-header">
-              <h3 style={{ color: theme.text.primary }}>{teamName}</h3>
-              <div className="roster-record" style={{ color: theme.text.secondary }}>
-                {roster.settings?.wins || 0}-{roster.settings?.losses || 0}
-                {roster.settings?.ties > 0 && `-${roster.settings.ties}`}
-              </div>
-            </div>
+      {/* Previous Seasons */}
+      {loading && (
+        <p style={{ color: theme.text.secondary }}>Loading previous seasons...</p>
+      )}
 
-            <div className="roster-starters">
-              <h4 style={{ color: theme.text.accent }}>Starters</h4>
-              <div className="players-list">
-                {starters.map((playerId, idx) => (
-                  <div
-                    key={`${playerId}-${idx}`}
-                    className="player-item"
-                    style={{ color: theme.text.primary }}
-                  >
-                    {getPlayerName(playerId)}
-                  </div>
-                ))}
-              </div>
-            </div>
+      {!loading && previousSeasons && previousSeasons.length > 0 && (
+        <>
+          {previousSeasons.map((season) => {
+            const seasonYear = season.league.season;
+            const isExpanded = expandedSeasons[seasonYear];
 
-            {bench.length > 0 && (
-              <div className="roster-bench">
-                <button
-                  className="bench-toggle"
-                  onClick={() => toggleBench(roster.roster_id)}
+            return (
+              <div
+                key={season.league.league_id}
+                className="season-rosters-container"
+                style={{
+                  background: theme.bg.tertiary,
+                  border: `2px solid ${theme.border.primary}`,
+                  marginBottom: '20px',
+                  opacity: 0.85,
+                }}
+              >
+                <div
+                  className="season-header"
+                  onClick={() => toggleSeason(seasonYear)}
                   style={{
-                    color: theme.text.secondary,
-                    borderColor: theme.border.primary,
+                    padding: '16px',
+                    borderBottom: isExpanded ? `1px solid ${theme.border.primary}` : 'none',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
                   }}
                 >
-                  {expandedRosters[roster.roster_id] ? '▼' : '▶'} Bench ({bench.length})
-                </button>
-                {expandedRosters[roster.roster_id] && (
-                  <div className="players-list bench-players">
-                    {bench.map((playerId, idx) => (
-                      <div
-                        key={`${playerId}-${idx}`}
-                        className="player-item"
-                        style={{ color: theme.text.secondary }}
-                      >
-                        {getPlayerName(playerId)}
-                      </div>
-                    ))}
+                  <h3 style={{ color: theme.text.primary, margin: 0 }}>
+                    {isExpanded ? '▼' : '▶'} {seasonYear} Season Rosters
+                  </h3>
+                  <span style={{ color: theme.text.secondary, fontSize: '0.9em' }}>
+                    {season.rosters?.length || 0} teams
+                  </span>
+                </div>
+                {isExpanded && (
+                  <div className="roster-cards-grid" style={{ padding: '16px' }}>
+                    {season.rosters && season.rosters.length > 0 ? (
+                      renderRosterCards(season.rosters, season.users, seasonYear)
+                    ) : (
+                      <p style={{ color: theme.text.tertiary }}>
+                        <em>No roster data available for this season</em>
+                      </p>
+                    )}
                   </div>
                 )}
               </div>
-            )}
-          </div>
-        );
-      })}
+            );
+          })}
+        </>
+      )}
     </div>
   );
 }
