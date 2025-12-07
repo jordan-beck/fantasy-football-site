@@ -8,16 +8,18 @@
 export const blogPosts = [
   {
     id: 1,
-    title: "Welcome to the National Pigskin League",
+    title: "Week 14",
     date: "2025-12-07",
     author: "Commissioner Beck",
     content: `
 
-# This is a test post of the blogging system.
+# Playoffs next week!
 
-We're excited to kick off another amazing season of fantasy football. This year promises to be full of exciting matchups, close games, and plenty of trash talk.
+It's the last week before the playoffs begin in week 15.   I had hoped to have had some more diversity in the standings, but it's looking likely that we'll either have a repeat (back-to-back), or at least a winner that has won recently.
 
-Good luck to all teams this season! May the best manager win.
+I like to see things shaken up at the top each year, but some people are just winners.
+
+Good luck to everyone this week, I'll see you guys in the playoffs!
     `,
   },
   {
