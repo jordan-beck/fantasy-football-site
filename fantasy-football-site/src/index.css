@@ -1,35 +1,54 @@
 :root {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-    "Helvetica", "Arial", sans-serif;
-  line-height: 1.5;
+  /* Retro Arcade Font Stack */
+  font-family: "Geist Mono", monospace, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
   font-weight: 400;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Retro Arcade CSS Variables */
+  --heading-font: "Jersey 25", sans-serif;
+  --body-font: "Geist Mono", monospace;
+  --neon-glow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor;
+  --neon-glow-strong: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor, 0 0 40px currentColor;
 }
 
-/* Global link styles - Dark theme */
+/* Retro Arcade Heading Styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Global link styles - Dark theme with Neon Glow (Red) */
 [data-theme="dark"] a {
-  font-weight: 500;
-  color: #8ab4f8;
-  text-decoration: inherit;
+  font-weight: 600;
+  color: #ff0040;
+  text-decoration: none;
+  text-shadow: var(--neon-glow);
+  transition: all 0.3s ease;
 }
 
 [data-theme="dark"] a:hover {
-  color: #aac7fa;
+  color: #ff3366;
+  text-shadow: var(--neon-glow-strong);
 }
 
-/* Global link styles - Light theme */
+/* Global link styles - Light theme (Blue) */
 [data-theme="light"] a {
-  font-weight: 500;
-  color: #667eea;
-  text-decoration: inherit;
+  font-weight: 600;
+  color: #0066ff;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
 [data-theme="light"] a:hover {
-  color: #5568d3;
+  color: #0044cc;
+  text-shadow: 0 0 8px rgba(0, 102, 255, 0.5);
 }
 
 body {
@@ -41,8 +60,19 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 3.5em;
   line-height: 1.1;
+}
+
+/* Arcade-style heading sizes */
+h2 {
+  font-size: 2.5em;
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: 1.8em;
+  line-height: 1.3;
 }
 
 /* Reset button styles to prevent conflicts with themed buttons */
@@ -54,8 +84,9 @@ button {
 
 button:focus,
 button:focus-visible {
-  outline: 2px solid rgba(102, 126, 234, 0.5);
-  outline-offset: 2px;
+  outline: 3px solid currentColor;
+  outline-offset: 3px;
+  box-shadow: var(--neon-glow);
 }
 
 /* Utility classes for theme-aware styling */
@@ -80,21 +111,30 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Selection colors - Dark theme */
+/* Selection colors - Dark theme (Neon Red) */
 [data-theme="dark"] ::selection {
-  background-color: rgba(138, 180, 248, 0.3);
-  color: #e8eaed;
+  background-color: rgba(255, 0, 64, 0.3);
+  color: #ff0040;
+  text-shadow: var(--neon-glow);
 }
 
-/* Selection colors - Light theme */
+/* Selection colors - Light theme (Blue) */
 [data-theme="light"] ::selection {
-  background-color: rgba(102, 126, 234, 0.3);
-  color: #1d1d1f;
+  background-color: rgba(0, 102, 255, 0.3);
+  color: #0066ff;
 }
 
-/* Focus visible styles for accessibility */
-*:focus-visible {
-  outline: 2px solid rgba(102, 126, 234, 0.5);
-  outline-offset: 2px;
-  border-radius: 4px;
+/* Focus visible styles for accessibility - Arcade Style */
+[data-theme="dark"] *:focus-visible {
+  outline: 3px solid #ff0040;
+  outline-offset: 3px;
+  border-radius: 0;
+  box-shadow: var(--neon-glow);
+}
+
+[data-theme="light"] *:focus-visible {
+  outline: 3px solid #0066ff;
+  outline-offset: 3px;
+  border-radius: 0;
+  box-shadow: 0 0 8px rgba(0, 102, 255, 0.5);
 }

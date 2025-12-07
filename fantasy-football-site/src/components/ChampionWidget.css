@@ -1,20 +1,32 @@
 .champion-widget {
-  border-radius: 12px;
+  border-radius: 0;
   padding: 24px;
   margin-bottom: 20px;
   transition: all 0.3s ease;
+  border: 3px solid;
 }
 
-/* Dark theme champion widget */
+/* Dark theme champion widget - Golden glow for champions */
+[data-theme="dark"] .champion-widget {
+  border-color: #ffaa00;
+  box-shadow: 0 0 25px rgba(255, 170, 0, 0.6), inset 0 0 15px rgba(255, 170, 0, 0.1);
+}
+
 [data-theme="dark"] .champion-widget:hover {
-  transform: translateY(-2px);
-  background: #222847;
+  transform: scale(1.03);
+  box-shadow: 0 0 35px rgba(255, 170, 0, 0.8), inset 0 0 20px rgba(255, 170, 0, 0.2);
 }
 
-/* Light theme champion widget */
+/* Light theme champion widget - Championship trophy style */
+[data-theme="light"] .champion-widget {
+  border-color: #ffaa00;
+  box-shadow: 0 6px 16px rgba(255, 170, 0, 0.4);
+  background: rgba(255, 170, 0, 0.2);
+}
+
 [data-theme="light"] .champion-widget:hover {
-  transform: translateY(-2px);
-  background: #f0f0f2;
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
 }
 
 .champion-widget h3 {
@@ -37,10 +49,12 @@
 .champion-avatar {
   width: 80px;
   height: 80px;
-  border-radius: 50%;
+  border-radius: 0;
   margin: 10px auto;
   display: block;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 20px #ffaa00;
+  border: 3px solid #ffaa00;
+  image-rendering: pixelated;
 }
 
 .champion-name {

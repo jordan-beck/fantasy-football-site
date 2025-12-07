@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Link, Outlet } from "react-router-dom";
 import { useTheme } from "../contexts/ThemeContext";
 import ThemeToggle from "./ThemeToggle";
+import Footer from "./Footer";
+import nplLogo from "../assets/NPL Logo.png";
 import "./Layout.css";
 
 function Layout({ leagueData, children }) {
@@ -27,8 +29,10 @@ function Layout({ leagueData, children }) {
         }}
       >
         <div className="mobile-header-content">
-          <div className="logo-placeholder" style={{ color: theme.text.primary }}>
-            <span className="logo-text">NPL</span>
+          <div className="logo-placeholder">
+            <Link to="/">
+              <img src={nplLogo} alt="National Pigskin League" className="npl-logo-mobile" />
+            </Link>
           </div>
           <button
             className="hamburger-menu"
@@ -65,6 +69,34 @@ function Layout({ leagueData, children }) {
             borderBottom: `1px solid ${theme.border.primary}`,
           }}
         >
+          <button
+            className="mobile-drawer-close"
+            onClick={closeMobileMenu}
+            aria-label="Close menu"
+            style={{
+              color: theme.text.primary,
+              border: `1px solid ${theme.border.primary}`,
+            }}
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+          <div className="logo-container">
+            <Link to="/" onClick={closeMobileMenu}>
+              <img src={nplLogo} alt="National Pigskin League" className="npl-logo-drawer" />
+            </Link>
+          </div>
           <h2 style={{ color: theme.text.primary }}>
             {leagueData?.name || "Fantasy League"}
           </h2>
@@ -89,6 +121,16 @@ function Layout({ leagueData, children }) {
                 Standings
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink to="/transactions" end className="nav-link" onClick={closeMobileMenu}>
+                Transactions
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/league-details" end className="nav-link" onClick={closeMobileMenu}>
+                League Details
+              </NavLink>
+            </li>
           </ul>
         </nav>
         <div className="theme-toggle-container">
@@ -110,6 +152,11 @@ function Layout({ leagueData, children }) {
             borderBottom: `1px solid ${theme.border.primary}`,
           }}
         >
+          <div className="logo-container">
+            <Link to="/">
+              <img src={nplLogo} alt="National Pigskin League" className="npl-logo-desktop" />
+            </Link>
+          </div>
           <h2 style={{ color: theme.text.primary }}>
             {leagueData?.name || "Fantasy League"}
           </h2>
@@ -134,6 +181,16 @@ function Layout({ leagueData, children }) {
                 Standings
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink to="/transactions" end className="nav-link">
+                Transactions
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/league-details" end className="nav-link">
+                League Details
+              </NavLink>
+            </li>
           </ul>
         </nav>
         <div className="theme-toggle-container">
@@ -155,6 +212,8 @@ function Layout({ leagueData, children }) {
       >
         {children}
       </aside>
+
+      <Footer leagueData={leagueData} />
     </div>
   );
 }

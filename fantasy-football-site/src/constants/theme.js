@@ -1,110 +1,111 @@
 /**
- * Theme Configuration
+ * Theme Configuration - NATIONAL PIGSKIN EDITION
  *
- * Defines color palettes for dark and light modes with WCAG AA compliant contrast ratios.
- * Modern, clean design with solid backgrounds.
+ * Red, White, and Blue color scheme inspired by National Pigskin logo.
+ * Dark theme: Classic arcade cabinet with red/white/blue neon lights
+ * Light theme: Clean modern with red/white/blue accents
  */
 
 export const themes = {
   dark: {
-    // Background colors - Deep navy theme
+    // Background colors - Arcade Cabinet Black
     bg: {
-      primary: '#050713',           // Main background - very dark navy
-      secondary: '#0d1117',         // Container backgrounds - darker
-      tertiary: '#161b22',          // Card backgrounds - darker
-      hover: '#1f2937',             // Hover state background
+      primary: '#000000',           // Pure black - arcade cabinet
+      secondary: '#0a0a0a',         // Slightly lighter black
+      tertiary: '#1a1a1a',          // Card backgrounds
+      hover: '#2a2a2a',             // Hover state
     },
 
-    // Text colors - Light text for dark backgrounds
+    // Text colors - Red/White/Blue palette
     text: {
-      primary: '#e8eaed',           // Main text - WCAG AAA (12.63:1 on #0a0e27)
-      secondary: '#9aa0a6',         // Secondary text - WCAG AA (4.88:1 on #0a0e27)
-      tertiary: '#5f6368',          // Muted text - WCAG AA (3.19:1 on #0a0e27)
-      accent: '#8ab4f8',            // Accent text (links, highlights) - WCAG AAA (8.59:1)
-      inverse: '#1d1d1f',           // For use on light backgrounds
+      primary: '#ffffff',           // White - main text
+      secondary: '#aaccff',         // Light blue - secondary
+      tertiary: '#888888',          // Gray - muted
+      accent: '#ff0040',            // Neon red - accents
+      inverse: '#000000',           // Black for light backgrounds
     },
 
-    // Border colors
+    // Border colors - Neon red/blue glows
     border: {
-      primary: 'rgba(232, 234, 237, 0.12)',   // Subtle borders
-      secondary: 'rgba(232, 234, 237, 0.08)', // Very subtle borders
-      accent: 'rgba(138, 180, 248, 0.4)',     // Accent borders
+      primary: 'rgba(255, 0, 64, 0.5)',      // Neon red glow
+      secondary: 'rgba(0, 102, 255, 0.4)',   // Blue glow
+      accent: 'rgba(255, 0, 64, 0.7)',       // Bright red accent
     },
 
-    // Status colors - WCAG AA compliant
+    // Status colors - Patriotic theme
     status: {
-      success: '#81c995',           // Green - WCAG AA (4.52:1)
-      warning: '#fdd663',           // Yellow - WCAG AAA (11.89:1)
-      error: '#f28b82',             // Red - WCAG AA (4.95:1)
-      info: '#8ab4f8',              // Blue - WCAG AAA (8.59:1)
+      success: '#0066ff',           // Blue - success
+      warning: '#ffaa00',           // Orange - warning
+      error: '#ff0040',             // Neon red - error
+      info: '#aaccff',              // Light blue - info
     },
 
-    // Interactive elements
+    // Interactive elements - Red/White/Blue buttons
     interactive: {
-      primary: '#667eea',           // Primary action color
-      primaryHover: '#5568d3',      // Primary hover state
-      secondary: 'rgba(102, 126, 234, 0.15)', // Secondary background
-      secondaryHover: 'rgba(102, 126, 234, 0.25)', // Secondary hover
-      disabled: 'rgba(154, 160, 166, 0.3)', // Disabled state
+      primary: '#ff0040',           // Neon red primary
+      primaryHover: '#ff3366',      // Bright red hover
+      secondary: 'rgba(0, 102, 255, 0.2)',    // Blue tint
+      secondaryHover: 'rgba(0, 102, 255, 0.3)', // Brighter blue
+      disabled: 'rgba(136, 136, 136, 0.3)',   // Gray disabled
     },
 
-    // Shadows
+    // Shadows - Red/Blue neon glows
     shadow: {
-      sm: '0 1px 3px 0 rgba(0, 0, 0, 0.4)',
-      md: '0 4px 12px 0 rgba(0, 0, 0, 0.5)',
-      lg: '0 10px 25px 0 rgba(0, 0, 0, 0.6)',
-      accent: '0 0 0 3px rgba(102, 126, 234, 0.3)',
+      sm: '0 0 10px rgba(255, 0, 64, 0.3)',
+      md: '0 0 20px rgba(255, 0, 64, 0.5), 0 0 30px rgba(255, 0, 64, 0.3)',
+      lg: '0 0 30px rgba(255, 0, 64, 0.6), 0 0 50px rgba(255, 0, 64, 0.4)',
+      accent: '0 0 20px rgba(255, 0, 64, 0.8), 0 0 30px rgba(255, 0, 64, 0.5)',
     },
   },
 
   light: {
-    // Background colors - Clean white theme
+    // Background colors - Clean white/gray
     bg: {
-      primary: '#f5f5f7',           // Main background - light gray
-      secondary: '#ffffff',         // Container backgrounds - pure white
-      tertiary: '#fafafa',          // Card backgrounds
-      hover: '#f0f0f2',             // Hover state background
+      primary: '#f5f5f7',           // Light gray background
+      secondary: '#ffffff',         // Pure white
+      tertiary: '#fafafa',          // Off-white
+      hover: '#e8e8ea',             // Hover gray
     },
 
-    // Text colors - Dark text for light backgrounds
+    // Text colors - Red/White/Blue palette
     text: {
-      primary: '#1d1d1f',           // Main text - WCAG AAA (15.27:1 on white)
-      secondary: '#86868b',         // Secondary text - WCAG AAA (4.54:1 on white)
-      tertiary: '#a1a1a6',          // Muted text - WCAG AA (3.09:1 on white)
-      accent: '#667eea',            // Accent text (links, highlights)
-      inverse: '#ffffff',           // For use on dark backgrounds
+      primary: '#1a1a1a',           // Dark gray text
+      secondary: '#0066ff',         // Blue for emphasis
+      tertiary: '#666666',          // Medium gray muted
+      accent: '#cc0033',            // Deep red accent
+      inverse: '#ffffff',           // White for dark backgrounds
     },
 
-    // Border colors
+    // Border colors - Blue/Red lines
     border: {
-      primary: 'rgba(0, 0, 0, 0.1)',        // Subtle borders
-      secondary: 'rgba(0, 0, 0, 0.06)',     // Very subtle borders
-      accent: 'rgba(102, 126, 234, 0.4)',   // Accent borders
+      primary: 'rgba(0, 102, 255, 0.4)',     // Blue borders
+      secondary: 'rgba(204, 0, 51, 0.3)',    // Red subtle
+      accent: 'rgba(0, 102, 255, 0.6)',      // Bright blue highlights
     },
 
-    // Status colors - WCAG AA compliant on white
+    // Status colors - Patriotic theme
     status: {
-      success: '#34c759',           // Green - WCAG AA (3.44:1 on white, passes for large text)
-      warning: '#ff9500',           // Orange - WCAG AA (3.45:1)
-      error: '#ff3b30',             // Red - WCAG AA (4.52:1)
-      info: '#007aff',              // Blue - WCAG AA (4.52:1)
+      success: '#0066ff',           // Blue
+      warning: '#ff9900',           // Orange
+      error: '#cc0033',             // Red
+      info: '#0088ff',              // Bright blue
     },
 
-    // Interactive elements
+    // Interactive elements - Blue/Red buttons
     interactive: {
-      primary: '#667eea',           // Primary action color
-      primaryHover: '#5568d3',      // Primary hover state
-      secondary: 'rgba(102, 126, 234, 0.08)', // Secondary background
-      secondaryHover: 'rgba(102, 126, 234, 0.15)', // Secondary hover
-      disabled: 'rgba(134, 134, 139, 0.3)', // Disabled state
+      primary: '#0066ff',           // Blue primary
+      primaryHover: '#0052cc',      // Darker blue hover
+      secondary: 'rgba(204, 0, 51, 0.15)',    // Red tint
+      secondaryHover: 'rgba(204, 0, 51, 0.25)', // Brighter red
+      disabled: 'rgba(102, 102, 102, 0.3)',   // Gray disabled
     },
 
-    // Shadows
+    // Shadows - Subtle depth
     shadow: {
-      sm: '0 1px 3px 0 rgba(0, 0, 0, 0.08)',
-      md: '0 4px 12px 0 rgba(0, 0, 0, 0.1)',
-      lg: '0 10px 25px 0 rgba(0, 0, 0, 0.12)',
-      accent: '0 0 0 3px rgba(102, 126, 234, 0.2)',
+      sm: '0 2px 4px 0 rgba(0, 0, 0, 0.15)',
+      md: '0 4px 12px 0 rgba(0, 0, 0, 0.2)',
+      lg: '0 8px 20px 0 rgba(0, 0, 0, 0.25)',
+      accent: '0 0 0 4px rgba(0, 102, 255, 0.3)',
     },
   },
 };

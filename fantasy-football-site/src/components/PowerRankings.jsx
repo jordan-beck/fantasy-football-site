@@ -33,12 +33,42 @@ function PowerRankings({ rosters, users }) {
   // Get max score for bar width calculation
   const maxScore = Math.max(...rankedTeams.map((team) => team.powerScore));
 
-  // Get rank colors based on position
-  const getRankColor = (index) => {
-    if (index === 0) return theme.status.success; // 1st place - green
-    if (index === 1 || index === 2) return theme.text.accent; // 2nd/3rd - accent
-    if (index >= rankedTeams.length - 2) return theme.status.error; // Bottom 2 - red
-    return theme.interactive.primary; // Middle teams - primary
+  // Get rank colors and tier info based on position
+  const getRankTier = (index) => {
+    // 1st place - Gold/Yellow
+    if (index === 0) {
+      return {
+        color: '#FFD700',
+        shadow: 'rgba(255, 215, 0, 0.6)',
+        tier: 'elite',
+        label: 'Elite'
+      };
+    }
+    // 2nd-3rd place - Silver/Blue
+    if (index === 1 || index === 2) {
+      return {
+        color: '#00D9FF',
+        shadow: 'rgba(0, 217, 255, 0.6)',
+        tier: 'contender',
+        label: 'Contender'
+      };
+    }
+    // Bottom 2 - Red
+    if (index >= rankedTeams.length - 2) {
+      return {
+        color: '#FF0040',
+        shadow: 'rgba(255, 0, 64, 0.6)',
+        tier: 'bottom',
+        label: 'Bottom'
+      };
+    }
+    // Middle teams - Purple
+    return {
+      color: '#9D4EDD',
+      shadow: 'rgba(157, 78, 221, 0.6)',
+      tier: 'middle',
+      label: 'Middle Pack'
+    };
   };
 
   return (
@@ -53,19 +83,26 @@ function PowerRankings({ rosters, users }) {
       <div className="power-rankings-list">
         {rankedTeams.map((team, index) => {
           const barWidth = (team.powerScore / maxScore) * 100;
-          const rankColor = getRankColor(index);
+          const tierInfo = getRankTier(index);
 
           return (
             <div
               key={team.roster_id}
-              className="power-ranking-item"
+              className={`power-ranking-item tier-${tierInfo.tier}`}
               style={{
                 background: theme.bg.tertiary,
-                border: `1px solid ${theme.border.primary}`,
+                border: `2px solid ${tierInfo.color}`,
+                boxShadow: `0 0 15px ${tierInfo.shadow}`,
               }}
             >
               <div className="ranking-info">
-                <span className="ranking-position" style={{ color: rankColor }}>
+                <span
+                  className="ranking-position"
+                  style={{
+                    color: tierInfo.color,
+                    textShadow: `0 0 10px ${tierInfo.shadow}`
+                  }}
+                >
                   #{index + 1}
                 </span>
                 {team.avatar && (
@@ -73,6 +110,10 @@ function PowerRankings({ rosters, users }) {
                     src={team.avatar}
                     alt={`${team.name} avatar`}
                     className="ranking-avatar"
+                    style={{
+                      borderColor: tierInfo.color,
+                      boxShadow: `0 0 8px ${tierInfo.shadow}`
+                    }}
                   />
                 )}
                 <span className="ranking-team-name" style={{ color: theme.text.primary }}>
@@ -93,16 +134,18 @@ function PowerRankings({ rosters, users }) {
                 className="ranking-bar-container"
                 style={{
                   background: theme.bg.primary,
+                  borderColor: tierInfo.color,
                 }}
               >
                 <div
                   className="ranking-bar"
                   style={{
                     width: `${barWidth}%`,
-                    background: rankColor,
+                    background: `linear-gradient(90deg, ${tierInfo.color}, ${tierInfo.color}dd)`,
+                    boxShadow: `0 0 15px ${tierInfo.shadow}, inset 0 0 20px rgba(0, 0, 0, 0.3)`,
                   }}
                 >
-                  <span className="ranking-score" style={{ color: theme.text.inverse }}>
+                  <span className="ranking-score" style={{ color: '#000', fontWeight: 700 }}>
                     {team.powerScore.toFixed(0)}
                   </span>
                 </div>
@@ -114,20 +157,20 @@ function PowerRankings({ rosters, users }) {
 
       <div className="power-rankings-legend" style={{ borderTop: `1px solid ${theme.border.primary}` }}>
         <div className="legend-item">
-          <span className="legend-dot" style={{ background: theme.status.success }}></span>
-          <span className="legend-label" style={{ color: theme.text.secondary }}>1st Place</span>
+          <span className="legend-dot" style={{ background: '#FFD700', boxShadow: '0 0 8px rgba(255, 215, 0, 0.6)' }}></span>
+          <span className="legend-label" style={{ color: theme.text.secondary }}>Elite (1st)</span>
         </div>
         <div className="legend-item">
-          <span className="legend-dot" style={{ background: theme.text.accent }}></span>
-          <span className="legend-label" style={{ color: theme.text.secondary }}>Top 3</span>
+          <span className="legend-dot" style={{ background: '#00D9FF', boxShadow: '0 0 8px rgba(0, 217, 255, 0.6)' }}></span>
+          <span className="legend-label" style={{ color: theme.text.secondary }}>Contender (2nd-3rd)</span>
         </div>
         <div className="legend-item">
-          <span className="legend-dot" style={{ background: theme.interactive.primary }}></span>
-          <span className="legend-label" style={{ color: theme.text.secondary }}>Middle</span>
+          <span className="legend-dot" style={{ background: '#9D4EDD', boxShadow: '0 0 8px rgba(157, 78, 221, 0.6)' }}></span>
+          <span className="legend-label" style={{ color: theme.text.secondary }}>Middle Pack</span>
         </div>
         <div className="legend-item">
-          <span className="legend-dot" style={{ background: theme.status.error }}></span>
-          <span className="legend-label" style={{ color: theme.text.secondary }}>Bottom 2</span>
+          <span className="legend-dot" style={{ background: '#FF0040', boxShadow: '0 0 8px rgba(255, 0, 64, 0.6)' }}></span>
+          <span className="legend-label" style={{ color: theme.text.secondary }}>Bottom Tier</span>
         </div>
       </div>
     </div>

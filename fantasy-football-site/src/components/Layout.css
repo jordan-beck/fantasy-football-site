@@ -8,7 +8,7 @@
 }
 
 .nav-sidebar {
-  border-radius: 16px;
+  border-radius: 0;
   padding: 30px 20px 20px 20px;
   position: sticky;
   top: 20px;
@@ -17,11 +17,38 @@
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease;
+  border: 3px solid;
+}
+
+/* Dark theme nav sidebar - Red neon borders */
+[data-theme="dark"] .nav-sidebar {
+  border-color: #ff0040;
+  box-shadow: 0 0 15px rgba(255, 0, 64, 0.4);
+}
+
+/* Light theme nav sidebar - Blue borders */
+[data-theme="light"] .nav-sidebar {
+  border-color: #0066ff;
+  box-shadow: 0 4px 8px rgba(0, 102, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .sidebar-header {
   margin-bottom: 30px;
   padding-bottom: 20px;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.npl-logo-desktop {
+  width: 80px;
+  height: auto;
+  image-rendering: pixelated;
+  display: block;
 }
 
 .sidebar-header h2 {
@@ -48,42 +75,54 @@
   display: block;
   text-decoration: none;
   padding: 12px 16px;
-  border-radius: 12px;
+  border-radius: 0;
   transition: all 0.3s ease;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.95em;
+  border: 2px solid transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-/* Dark theme nav links */
+/* Dark theme nav links - Red/Blue neon */
 [data-theme="dark"] .nav-link {
-  color: #e8eaed;
+  color: #aaccff;
 }
 
 [data-theme="dark"] .nav-link:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 0, 64, 0.1);
+  border-color: #ff0040;
+  color: #ff0040;
+  text-shadow: 0 0 10px currentColor;
   transform: translateX(4px);
 }
 
 [data-theme="dark"] .nav-link.active {
-  background: rgba(102, 126, 234, 0.25);
-  color: #8ab4f8;
-  font-weight: 600;
+  background: rgba(255, 0, 64, 0.2);
+  border-color: #ff0040;
+  color: #ff0040;
+  font-weight: 700;
+  text-shadow: 0 0 15px currentColor;
 }
 
-/* Light theme nav links */
+/* Light theme nav links - Blue/Red style */
 [data-theme="light"] .nav-link {
-  color: #1d1d1f;
+  color: #1a1a1a;
 }
 
 [data-theme="light"] .nav-link:hover {
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(0, 102, 255, 0.15);
+  border-color: #0066ff;
+  color: #0066ff;
   transform: translateX(4px);
 }
 
 [data-theme="light"] .nav-link.active {
-  background: rgba(102, 126, 234, 0.15);
-  color: #667eea;
-  font-weight: 600;
+  background: rgba(204, 0, 51, 0.2);
+  border-color: #cc0033;
+  color: #cc0033;
+  font-weight: 700;
+  text-shadow: none;
 }
 
 .main-content {
@@ -92,13 +131,27 @@
 }
 
 .widgets-sidebar {
-  border-radius: 16px;
+  border-radius: 0;
   padding: 20px;
   position: sticky;
   top: 20px;
   height: calc(100vh - 40px);
   overflow-y: auto;
   transition: all 0.3s ease;
+  border: 3px solid;
+}
+
+/* Dark theme widgets sidebar */
+[data-theme="dark"] .widgets-sidebar {
+  border-color: #ff0040;
+  box-shadow: 0 0 15px rgba(255, 0, 64, 0.4);
+}
+
+/* Light theme widgets sidebar */
+[data-theme="light"] .widgets-sidebar {
+  border-color: #0066ff;
+  box-shadow: 0 4px 8px rgba(0, 102, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 /* Theme toggle container */
@@ -109,48 +162,50 @@
   justify-content: center;
 }
 
-/* Custom scrollbar for sidebars - Dark theme */
+/* Custom scrollbar for sidebars - Dark theme (Red neon) */
 [data-theme="dark"] .nav-sidebar::-webkit-scrollbar,
 [data-theme="dark"] .widgets-sidebar::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 [data-theme="dark"] .nav-sidebar::-webkit-scrollbar-track,
 [data-theme="dark"] .widgets-sidebar::-webkit-scrollbar-track {
-  background: transparent;
+  background: rgba(255, 0, 64, 0.1);
 }
 
 [data-theme="dark"] .nav-sidebar::-webkit-scrollbar-thumb,
 [data-theme="dark"] .widgets-sidebar::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
+  background: #ff0040;
+  border-radius: 0;
+  box-shadow: 0 0 10px rgba(255, 0, 64, 0.8);
 }
 
 [data-theme="dark"] .nav-sidebar::-webkit-scrollbar-thumb:hover,
 [data-theme="dark"] .widgets-sidebar::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: #ff3366;
+  box-shadow: 0 0 15px rgba(255, 0, 64, 1);
 }
 
-/* Custom scrollbar for sidebars - Light theme */
+/* Custom scrollbar for sidebars - Light theme (Blue) */
 [data-theme="light"] .nav-sidebar::-webkit-scrollbar,
 [data-theme="light"] .widgets-sidebar::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 [data-theme="light"] .nav-sidebar::-webkit-scrollbar-track,
 [data-theme="light"] .widgets-sidebar::-webkit-scrollbar-track {
-  background: transparent;
+  background: rgba(0, 102, 255, 0.1);
 }
 
 [data-theme="light"] .nav-sidebar::-webkit-scrollbar-thumb,
 [data-theme="light"] .widgets-sidebar::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
+  background: #0066ff;
+  border-radius: 0;
 }
 
 [data-theme="light"] .nav-sidebar::-webkit-scrollbar-thumb:hover,
 [data-theme="light"] .widgets-sidebar::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.3);
+  background: #cc0033;
 }
 
 /* ===========================
@@ -194,7 +249,9 @@
   }
 
   .widgets-sidebar {
-    display: none;
+    position: static;
+    height: auto;
+    margin-top: 16px;
   }
 
   .main-content {
@@ -243,10 +300,11 @@
     align-items: center;
   }
 
-  .logo-text {
-    font-size: 1.5em;
-    font-weight: 700;
-    letter-spacing: 1px;
+  .npl-logo-mobile {
+    height: 44px;
+    width: auto;
+    image-rendering: pixelated;
+    display: block;
   }
 
   /* Hamburger Menu Button */
@@ -335,6 +393,35 @@
 
   .mobile-drawer-header {
     padding: 24px 20px;
+    position: relative;
+  }
+
+  .mobile-drawer-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: transparent;
+    border-radius: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .mobile-drawer-close:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+
+  .npl-logo-drawer {
+    width: 90px;
+    height: auto;
+    image-rendering: pixelated;
+    display: block;
+    margin-bottom: 16px;
   }
 
   .mobile-drawer-header h2 {
@@ -362,10 +449,13 @@
     display: block;
     text-decoration: none;
     padding: 14px 16px;
-    border-radius: 12px;
+    border-radius: 0;
     transition: all 0.3s ease;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 1em;
+    border: 2px solid transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   /* Main content */
@@ -374,7 +464,11 @@
   }
 
   .widgets-sidebar {
-    display: none;
+    position: static;
+    height: auto;
+    margin-top: 12px;
+    border-left: none;
+    border-right: none;
   }
 }
 

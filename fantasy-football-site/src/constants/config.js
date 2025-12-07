@@ -11,6 +11,7 @@ export const API_CONFIG = {
     ROSTERS: (leagueId) => `/league/${leagueId}/rosters`,
     USERS: (leagueId) => `/league/${leagueId}/users`,
     MATCHUPS: (leagueId, week) => `/league/${leagueId}/matchups/${week}`,
+    TRANSACTIONS: (leagueId, week) => `/league/${leagueId}/transactions/${week}`,
   },
 };
 

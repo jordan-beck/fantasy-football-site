@@ -2,25 +2,42 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 32px;
+  height: 32px;
   padding: 0;
-  border-radius: 12px;
+  border-radius: 0;
   cursor: pointer;
   transition: all 0.3s ease;
+  border: 1px solid currentColor;
 }
 
-.theme-toggle:hover {
-  transform: scale(1.05);
+/* Dark theme toggle - Neon style */
+[data-theme="dark"] .theme-toggle {
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  transform: scale(1.05) rotate(10deg);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+}
+
+/* Light theme toggle - Bold retro style */
+[data-theme="light"] .theme-toggle {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] .theme-toggle:hover {
+  transform: scale(1.05) rotate(10deg);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 .theme-toggle:active {
-  transform: scale(0.95);
+  transform: scale(0.9);
 }
 
 .theme-toggle:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 0 0 2px currentColor;
 }
 
 .theme-toggle svg {

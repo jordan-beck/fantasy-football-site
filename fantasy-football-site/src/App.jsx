@@ -1,11 +1,16 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useTheme } from './contexts/ThemeContext';
 import { useLeagueData } from './hooks/useLeagueData';
+import { useTransactions } from './hooks/useTransactions';
+import { useNFLPlayers } from './hooks/useNFLPlayers';
 import Layout from './components/Layout';
 import Home from './components/Home';
 import Standings from './components/Standings';
 import Matchups from './components/Matchups';
+import Transactions from './components/Transactions';
+import LeagueDetails from './components/LeagueDetails';
 import ChampionWidget from './components/ChampionWidget';
+import RecentTransactions from './components/RecentTransactions';
 import './App.css';
 
 /**
@@ -15,6 +20,17 @@ import './App.css';
 function App() {
   const { theme } = useTheme();
   const { leagueData, rosters, users, loading, error } = useLeagueData();
+  const { players: nflPlayers } = useNFLPlayers();
+
+  // Fetch transactions using the current week from league data
+  const currentWeek = leagueData?.settings?.leg || 1;
+  const { transactions, loading: transactionsLoading } = useTransactions(
+    leagueData?.league_id,
+    currentWeek,
+    users,
+    rosters,
+    nflPlayers
+  );
 
   // Loading state
   if (loading) {
@@ -58,6 +74,7 @@ function App() {
           element={
             <Layout leagueData={leagueData}>
               <ChampionWidget currentLeagueId={leagueData.league_id} />
+              <RecentTransactions transactions={transactions} />
             </Layout>
           }
         >
@@ -78,6 +95,21 @@ function App() {
           <Route
             path="standings"
             element={<Standings rosters={rosters} users={users} />}
+          />
+          <Route
+            path="transactions"
+            element={<Transactions transactions={transactions} />}
+          />
+          <Route
+            path="league-details"
+            element={
+              <LeagueDetails
+                leagueData={leagueData}
+                rosters={rosters}
+                users={users}
+                nflPlayers={nflPlayers}
+              />
+            }
           />
         </Route>
       </Routes>

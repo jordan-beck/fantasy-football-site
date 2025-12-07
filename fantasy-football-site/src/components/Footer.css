@@ -1,0 +1,43 @@
+.footer {
+  padding: 24px 20px;
+  border-radius: 0;
+}
+
+.footer-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-content p {
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Desktop: Footer appears in center column */
+@media (min-width: 769px) {
+  .footer {
+    grid-column: 2;
+    margin-top: 40px;
+  }
+}
+
+/* Tablet: Footer in main content area */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .footer {
+    grid-column: 2;
+    margin-top: 32px;
+  }
+}
+
+/* Mobile: Footer at bottom after sidebar */
+@media (max-width: 768px) {
+  .footer {
+    position: relative;
+    margin-top: 20px;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+  }
+}

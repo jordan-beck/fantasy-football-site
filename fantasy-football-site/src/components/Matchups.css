@@ -1,7 +1,21 @@
 .matchups-container {
-  border-radius: 16px;
+  border-radius: 0;
   padding: 30px;
   transition: all 0.3s ease;
+  border: 4px solid;
+}
+
+/* Dark theme container */
+[data-theme="dark"] .matchups-container {
+  border-color: #ff0040;
+  box-shadow: 0 0 15px rgba(255, 0, 64, 0.4);
+}
+
+/* Light theme container */
+[data-theme="light"] .matchups-container {
+  border-color: #0066ff;
+  box-shadow: 0 4px 8px rgba(0, 102, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .matchups-title {
@@ -27,51 +41,59 @@
 
 .week-button {
   padding: 10px 24px;
-  border-radius: 12px;
+  border-radius: 0;
   cursor: pointer;
   font-size: 0.95em;
-  font-weight: 600;
+  font-weight: 700;
   transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-/* Dark theme week buttons */
+/* Dark theme week buttons - Arcade style */
 [data-theme="dark"] .week-button {
-  background: #1a1f3a;
-  color: #8ab4f8;
-  border: 1px solid rgba(138, 180, 248, 0.4);
+  background: rgba(255, 0, 64, 0.2);
+  color: #ff0040;
+  border: 3px solid #ff0040;
+  text-shadow: 0 0 10px currentColor;
 }
 
 [data-theme="dark"] .week-button:hover:not(:disabled) {
-  background: #222847;
-  transform: translateY(-2px);
+  background: rgba(255, 0, 64, 0.4);
+  box-shadow: 0 0 20px rgba(255, 0, 64, 0.8);
+  transform: scale(1.05);
 }
 
 [data-theme="dark"] .week-button:disabled {
-  background: rgba(154, 160, 166, 0.1);
-  color: #5f6368;
+  background: rgba(136, 136, 136, 0.1);
+  color: #888888;
   cursor: not-allowed;
-  border-color: rgba(232, 234, 237, 0.1);
+  border-color: #888888;
   opacity: 0.5;
+  text-shadow: none;
 }
 
-/* Light theme week buttons */
+/* Light theme week buttons - Retro style */
 [data-theme="light"] .week-button {
-  background: #ffffff;
-  color: #667eea;
-  border: 1px solid rgba(102, 126, 234, 0.4);
+  background: rgba(204, 0, 51, 0.3);
+  color: #ffffff;
+  border: 3px solid #cc0033;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 [data-theme="light"] .week-button:hover:not(:disabled) {
-  background: #f0f0f2;
-  transform: translateY(-2px);
+  background: rgba(204, 0, 51, 0.5);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+  transform: scale(1.05);
 }
 
 [data-theme="light"] .week-button:disabled {
-  background: rgba(0, 0, 0, 0.05);
-  color: #86868b;
+  background: rgba(204, 204, 204, 0.3);
+  color: #cccccc;
   cursor: not-allowed;
-  border-color: rgba(0, 0, 0, 0.1);
+  border-color: #cccccc;
   opacity: 0.5;
+  text-shadow: none;
 }
 
 .week-display {
@@ -80,22 +102,36 @@
 }
 
 .matchup-card {
-  border-radius: 12px;
+  border-radius: 0;
   padding: 20px;
   margin-bottom: 15px;
   transition: all 0.3s ease;
+  border: 2px solid;
 }
 
-/* Dark theme matchup cards */
+/* Dark theme matchup cards - Neon borders */
+[data-theme="dark"] .matchup-card {
+  border-color: #ff0040;
+  box-shadow: 0 0 15px rgba(255, 0, 64, 0.4);
+}
+
 [data-theme="dark"] .matchup-card:hover {
-  transform: translateY(-2px);
-  background: #222847;
+  transform: scale(1.02);
+  border-color: #0066ff;
+  box-shadow: 0 0 25px rgba(0, 102, 255, 0.7);
 }
 
-/* Light theme matchup cards */
+/* Light theme matchup cards - Bold borders */
+[data-theme="light"] .matchup-card {
+  border-color: #0066ff;
+  box-shadow: 0 4px 8px rgba(0, 102, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+}
+
 [data-theme="light"] .matchup-card:hover {
-  transform: translateY(-2px);
-  background: #f0f0f2;
+  transform: scale(1.02);
+  border-color: #cc0033;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
 .matchup-team {
@@ -119,9 +155,11 @@
 .matchup-avatar {
   width: 28px;
   height: 28px;
-  border-radius: 50%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 0;
+  box-shadow: 0 0 10px currentColor;
+  border: 2px solid currentColor;
   object-fit: cover;
+  image-rendering: pixelated;
 }
 
 .team-score {
@@ -159,7 +197,7 @@
 @media (max-width: 768px) {
   .matchups-container {
     padding: 20px;
-    border-radius: 12px;
+    border-radius: 0;
   }
 
   .matchups-title {
