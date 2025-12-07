@@ -68,9 +68,8 @@ function Standings({ rosters, users }) {
                   className="stat-label"
                   style={{ color: theme.text.secondary }}
                 >
-                  {" "}
-                  | Points against:{" "}
-                </span>{" "}
+                  {" | Points against: "}
+                </span>
                 {roster.settings.fpts_against}
               </p>
             </div>
