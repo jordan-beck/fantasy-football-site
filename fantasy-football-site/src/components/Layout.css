@@ -264,7 +264,7 @@
   .layout {
     grid-template-columns: 1fr;
     gap: 12px;
-    padding: 70px 20px 0 12px; /* Extra right padding for scrollbar visibility */
+    padding: 70px 8px 0 8px; /* Minimal padding for mobile */
   }
 
   /* Hide desktop navigation */
@@ -281,9 +281,7 @@
     right: 0;
     z-index: 1000;
     border-radius: 0;
-    border-left: none;
-    border-right: none;
-    border-top: none;
+    border: none; /* Remove all borders */
     padding: 0;
   }
 
@@ -475,7 +473,7 @@
 @media (max-width: 480px) {
   .layout {
     gap: 10px;
-    padding: 65px 18px 0 10px; /* Extra right padding for scrollbar visibility */
+    padding: 65px 6px 0 6px; /* Minimal padding for small mobile */
   }
 
   .mobile-header-content {

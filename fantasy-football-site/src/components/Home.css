@@ -124,7 +124,7 @@
   .home-container {
     padding: 16px;
     border-radius: 0;
-    margin: 0 12px 12px 12px;
+    margin: 0 0 12px 0; /* Remove side margins */
   }
 
   .home-title {
@@ -165,6 +165,7 @@
 @media (max-width: 480px) {
   .home-container {
     padding: 12px;
+    margin: 0 0 10px 0; /* Remove side margins */
   }
 
   .home-title {
