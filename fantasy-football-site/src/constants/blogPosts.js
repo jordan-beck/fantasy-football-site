@@ -9,58 +9,32 @@ export const blogPosts = [
   {
     id: 1,
     title: "Welcome to the National Pigskin League",
-    date: "2024-12-04",
-    author: "League Commissioner",
+    date: "2025-12-07",
+    author: "Commissioner Beck",
     content: `
-# Welcome to Our League!
+
+# This is a test post of the blogging system.
 
 We're excited to kick off another amazing season of fantasy football. This year promises to be full of exciting matchups, close games, and plenty of trash talk.
 
-## What's New This Season
-
-- **Enhanced Stats Tracking**: We've upgraded our platform to give you better insights into your team's performance
-- **Weekly Power Rankings**: See how your team stacks up against the competition
-- **Mobile-Friendly Interface**: Access your team on the go with our new responsive design
-
-## Tips for Success
-
-1. **Stay Active**: Check your lineup every week and make necessary adjustments
-2. **Watch the Waiver Wire**: The best managers know that championships are won on waivers
-3. **Trade Smart**: Don't be afraid to propose trades, but make sure they benefit your team
-
 Good luck to all teams this season! May the best manager win.
-
----
-
-*Remember: It's not just about winning, it's about having fun and staying engaged all season long!*
-    `
+    `,
   },
   {
     id: 2,
-    title: "Week 1 Recap: The Season Begins",
-    date: "2024-09-10",
-    author: "League Commissioner",
+    title: "National Pigskin League Website v1.0",
+    date: "2025-12-07",
+    author: "Commissioner Beck",
     content: `
-# Week 1 in the Books!
+The ex-commish, Aaron (Jabroni Beaters), and I have talked many times in the past about making a website for the league.  Well that is now officially a reality.
 
-What a way to start the season! We saw some incredible performances and a few surprises.
+Unfortunately, I don't have data from years prior to 2022, as that is when we switched from the ESPN platform to Sleeper.   However, I would like to eventually add this data if possible-- stay tuned.   At the very least, I will piece together past winners and losers since the league started.   We'll be relying on good old fashioned brain power for this.
 
-## Top Performances
+I'm happy with the amount of stats and records the website currently holds, but would be willing to add more.  If you have any ideas, let me know.
 
-- Highest scoring team put up **150+ points** - impressive start!
-- Several close matchups decided by less than 5 points
-- The waiver wire is already heating up
-
-## Looking Ahead
-
-Week 2 is right around the corner. Make sure to:
-- Set your lineups before Thursday night
-- Check injury reports
-- Stay active on waivers
-
-Let's keep the momentum going!
-    `
-  }
+-- Commissioner Beck
+    `,
+  },
 ];
 
 /**
@@ -74,7 +48,7 @@ export function getAllPosts() {
  * Get a single blog post by ID
  */
 export function getPostById(id) {
-  return blogPosts.find(post => post.id === id);
+  return blogPosts.find((post) => post.id === id);
 }
 
 /**
