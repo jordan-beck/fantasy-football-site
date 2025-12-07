@@ -606,7 +606,7 @@
 @media (max-width: 768px) {
   .league-details-container {
     padding: 16px;
-    margin: 0 12px 12px 12px;
+    margin: 0 0 12px 0;
   }
 
   .league-details-title {
