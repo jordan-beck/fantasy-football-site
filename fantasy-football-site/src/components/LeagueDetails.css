@@ -318,17 +318,6 @@
 .draft-card {
   border-radius: 0;
   padding: 24px;
-  transition: all 0.3s ease;
-}
-
-[data-theme="dark"] .draft-card:hover {
-  transform: scale(1.01);
-  box-shadow: 0 0 20px rgba(0, 102, 255, 0.5);
-}
-
-[data-theme="light"] .draft-card:hover {
-  transform: scale(1.01);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .draft-card h3 {

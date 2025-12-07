@@ -48,17 +48,26 @@ function Standings({ rosters, users }) {
             </h3>
             <div className="team-stats" style={{ color: theme.text.primary }}>
               <p className="stat-item">
-                <span className="stat-label" style={{ color: theme.text.secondary }}>
+                <span
+                  className="stat-label"
+                  style={{ color: theme.text.secondary }}
+                >
                   Record:{" "}
                 </span>
                 {roster.settings.wins}-{roster.settings.losses}
               </p>
               <p className="stat-item">
-                <span className="stat-label" style={{ color: theme.text.secondary }}>
+                <span
+                  className="stat-label"
+                  style={{ color: theme.text.secondary }}
+                >
                   Points for:{" "}
                 </span>
                 {roster.settings.fpts}
-                <span className="stat-label" style={{ color: theme.text.secondary }}>
+                <span
+                  className="stat-label"
+                  style={{ color: theme.text.secondary }}
+                >
                   {" "}
                   | Points against:{" "}
                 </span>{" "}
@@ -74,7 +83,7 @@ function Standings({ rosters, users }) {
         style={{
           background: theme.bg.secondary,
           border: `1px solid ${theme.border.primary}`,
-          marginTop: '20px',
+          marginTop: "20px",
         }}
       >
         <PowerRankings rosters={rosters} users={users} />

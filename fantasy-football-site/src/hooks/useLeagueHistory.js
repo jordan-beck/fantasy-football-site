@@ -279,9 +279,9 @@ export function calculateRecords(matchups, allSeasonsData, currentSeason) {
     points: score.points.toFixed(2),
   }));
 
-  // Get top 10 lowest single week scores (filter out zeros AND current season)
+  // Get top 10 lowest single week scores (filter out zeros, current season, and week 18)
   records.lowestSingleWeek = sortedByPoints
-    .filter(score => score.points > 0 && score.season !== currentSeason)
+    .filter(score => score.points > 0 && score.season !== currentSeason && score.week !== 18)
     .slice(-10)
     .reverse()
     .map(score => ({
@@ -321,7 +321,7 @@ export function calculateRecords(matchups, allSeasonsData, currentSeason) {
     totalGamesPlayed: allWeekScores.length,
     averageScore: (allWeekScores.reduce((sum, s) => sum + s.points, 0) / allWeekScores.length).toFixed(2),
     highestScore: sortedByPoints[0],
-    lowestScore: sortedByPoints.filter(s => s.season !== currentSeason)[sortedByPoints.length - 1],
+    lowestScore: sortedByPoints.filter(s => s.season !== currentSeason && s.week !== 18)[sortedByPoints.length - 1],
   };
 
   return records;
