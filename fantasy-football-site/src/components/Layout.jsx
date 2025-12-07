@@ -25,7 +25,6 @@ function Layout({ leagueData, children }) {
         className="mobile-header"
         style={{
           background: theme.bg.secondary,
-          border: `1px solid ${theme.border.primary}`,
         }}
       >
         <div className="mobile-header-content">
