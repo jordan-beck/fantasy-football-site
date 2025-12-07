@@ -6,13 +6,8 @@ export default defineConfig({
   plugins: [react()],
   build: {
     // Production optimizations
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true, // Remove console.logs in production
-        drop_debugger: true,
-      },
-    },
+    minify: 'esbuild', // Using esbuild (default, faster than terser)
+    target: 'esnext',
     rollupOptions: {
       output: {
         manualChunks: {
@@ -23,6 +18,10 @@ export default defineConfig({
       },
     },
     chunkSizeWarningLimit: 1000,
+  },
+  esbuild: {
+    // Remove console.logs and debugger statements in production
+    drop: ['console', 'debugger'],
   },
   server: {
     port: 3000,
