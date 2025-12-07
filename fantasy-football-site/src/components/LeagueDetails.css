@@ -631,4 +631,31 @@
   .managers-section {
     grid-template-columns: 1fr;
   }
+
+  .record-item {
+    grid-template-columns: 35px 1fr auto auto;
+    gap: 10px;
+    padding: 10px 12px;
+  }
+
+  .record-rank {
+    font-size: 1em;
+  }
+
+  .record-team {
+    font-size: 0.85em;
+  }
+
+  .record-details {
+    font-size: 0.75em;
+  }
+
+  .record-score {
+    font-size: 0.9em;
+    min-width: 65px;
+  }
+
+  .record-score-avg {
+    font-size: 0.7em;
+  }
 }
