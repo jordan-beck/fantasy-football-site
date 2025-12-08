@@ -14,7 +14,6 @@ function Matchups({ rosters, users, currentWeek }) {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log("Matchups:", data);
         setMatchups(data);
       })
       .catch((error) => {

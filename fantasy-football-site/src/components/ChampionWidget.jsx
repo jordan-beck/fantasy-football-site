@@ -32,24 +32,13 @@ function ChampionWidget({ currentLeagueId }) {
             (r) => r.json()
           ),
         ]).then(([league, rosters, users]) => {
-          console.log("Previous year league:", league);
-          console.log("Previous year rosters:", rosters);
-
           const winnerRosterId = Number(
             league.metadata?.latest_league_winner_roster_id
-          );
-          console.log("Winner roster ID:", winnerRosterId);
-          console.log(
-            "All roster IDs:",
-            rosters.map((r) => r.roster_id)
           );
 
           const championRoster = rosters.find(
             (roster) => roster.roster_id === winnerRosterId
           );
-
-          console.log("Winner roster ID:", winnerRosterId);
-          console.log("Champion roster:", championRoster);
 
           if (championRoster) {
             const championUser = users.find(

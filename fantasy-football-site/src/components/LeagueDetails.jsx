@@ -442,9 +442,28 @@ function RostersSection({
                 style={{
                   color: theme.text.secondary,
                   borderColor: theme.border.primary,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
                 }}
               >
-                {expandedRosters[benchKey] ? "▼" : "▶"} Bench ({bench.length})
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  {expandedRosters[benchKey] ? (
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  ) : (
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  )}
+                </svg>
+                Bench ({bench.length})
               </button>
               {expandedRosters[benchKey] && (
                 <div className="players-list bench-players">
@@ -529,8 +548,24 @@ function RostersSection({
                     alignItems: "center",
                   }}
                 >
-                  <h3 style={{ color: theme.text.primary, margin: 0 }}>
-                    {isExpanded ? "▼" : "▶"} {seasonYear} Season Rosters
+                  <h3 style={{ color: theme.text.primary, margin: 0, display: "flex", alignItems: "center", gap: "8px" }}>
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      {isExpanded ? (
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      ) : (
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                      )}
+                    </svg>
+                    {seasonYear} Season Rosters
                   </h3>
                   <span
                     style={{ color: theme.text.secondary, fontSize: "0.9em" }}
@@ -813,8 +848,24 @@ function DraftsSection({
                   cursor: "pointer",
                 }}
               >
-                <span style={{ color: theme.text.primary, fontWeight: 700 }}>
-                  {isExpanded ? "▼" : "▶"} Round {round}
+                <span style={{ color: theme.text.primary, fontWeight: 700, display: "flex", alignItems: "center", gap: "8px" }}>
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    {isExpanded ? (
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    ) : (
+                      <polyline points="9 18 15 12 9 6"></polyline>
+                    )}
+                  </svg>
+                  Round {round}
                 </span>
                 <span
                   style={{ color: theme.text.secondary, fontSize: "0.9em" }}

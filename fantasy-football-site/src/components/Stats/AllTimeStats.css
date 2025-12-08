@@ -4,34 +4,6 @@
   gap: 20px;
 }
 
-/* Header with recalculate button */
-.stats-header {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 10px;
-}
-
-.recalculate-btn {
-  padding: 8px 16px;
-  border-radius: 0;
-  font-size: 0.85em;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  border: 2px solid;
-  outline: none;
-  background: transparent;
-  font-family: var(--body-font);
-}
-
-[data-theme="dark"] .recalculate-btn:hover {
-  background: rgba(0, 102, 255, 0.1);
-}
-
-[data-theme="light"] .recalculate-btn:hover {
-  background: rgba(0, 102, 255, 0.1);
-}
-
 /* Loading state */
 .all-time-stats-loading {
   display: flex;
@@ -76,21 +48,6 @@
 .all-time-stats-error {
   padding: 20px;
   text-align: center;
-}
-
-.all-time-stats-error button {
-  margin-top: 12px;
-  padding: 8px 16px;
-  border-radius: 0;
-  border: 2px solid;
-  background: transparent;
-  cursor: pointer;
-  font-family: var(--body-font);
-  transition: all 0.2s ease;
-}
-
-.all-time-stats-error button:hover {
-  background: rgba(0, 102, 255, 0.1);
 }
 
 /* Stats Section */
@@ -201,11 +158,6 @@
 
   .stat-value {
     font-size: 0.9em;
-  }
-
-  .recalculate-btn {
-    font-size: 0.8em;
-    padding: 6px 12px;
   }
 }
 

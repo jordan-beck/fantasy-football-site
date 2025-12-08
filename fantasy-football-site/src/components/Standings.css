@@ -91,6 +91,11 @@
   font-weight: 500;
 }
 
+.stat-label::after {
+  content: " ";
+  white-space: pre;
+}
+
 /* ===========================
    RESPONSIVE DESIGN
    =========================== */
@@ -136,9 +141,14 @@
   }
 
   .team-stats {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 12px;
     font-size: 0.95em;
+  }
+
+  .record-stat {
+    grid-column: 1 / -1;
   }
 }
 
